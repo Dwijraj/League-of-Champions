@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100"
+    android:background="#fff"
+    android:orientation="vertical"
+    tools:context="com.leagueofchampions.kiit.Homescreen">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_weight="60"
+        android:layout_height="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:weightSum="100"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:layout_weight="80"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <ImageView
+                    android:scaleType="fitXY"
+                    android:layout_width="match_parent"
+                    android:src="@drawable/_h_"
+                    android:id="@+id/Wallpaper"
+                    android:layout_height="match_parent" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="100"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_weight="10"
+                        android:layout_width="0dp"
+                        android:gravity="center"
+                        android:layout_height="match_parent">
+
+                        <ImageButton
+
+                            android:background="#d9d4d4"
+                            android:id="@+id/move_left"
+                            android:layout_width="wrap_content"
+                            android:src="@drawable/ic_keyboard_arrow_left_white_24dp"
+                            android:layout_height="wrap_content" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="80"/>
+
+
+                    <LinearLayout
+                        android:layout_weight="10"
+                        android:layout_width="0dp"
+                        android:gravity="center"
+                        android:layout_height="match_parent">
+
+                        <ImageButton
+                            android:background="#d9d4d4"
+                            android:id="@+id/move_right"
+                            android:layout_width="wrap_content"
+                            android:src="@drawable/ic_keyboard_arrow_right_white_24dp"
+                            android:layout_height="wrap_content" />
+
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+
+            </FrameLayout>
+
+            <View
+                android:background="#000"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"/>
+
+            <LinearLayout
+                android:layout_weight="18"
+                android:gravity="center"
+                android:background="@color/AppTheme"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+
+                <com.romainpiel.shimmer.ShimmerTextView
+                    android:elevation="100dp"
+                    android:shadowColor="#b4abab"
+                    android:textSize="22sp"
+                    android:gravity="center"
+                    android:id="@+id/Title"
+                    android:textColor="#444"
+                    android:layout_marginLeft="30dp"
+                    android:textStyle="bold"
+                    android:typeface="serif"
+                    android:text="League of Champions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <View
+                android:background="#000"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:weightSum="100"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <View
+                android:layout_weight="60"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+
+            <LinearLayout
+                android:layout_weight="38"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="70dp"
+                    android:layout_marginTop="40dp"
+                    app:civ_border_width="2dp"
+                    android:scaleType="centerCrop"
+                    app:civ_border_color="#151414"
+                    android:elevation="20dp"
+                    android:src="@drawable/logo"
+                    android:layout_height="70dp" />
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="end"
+            android:layout_height="40dp">
+
+            <ImageView
+                android:id="@+id/set_as_wallpaper"
+                android:src="@drawable/home_page_set"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+    <android.support.design.widget.TabLayout
+        android:id="@+id/Tab_layout"
+        app:tabTextColor="#fff"
+        app:tabSelectedTextColor="#fff"
+        android:background="@color/AppTheme"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:tabMode="fixed"
+        app:tabGravity="fill"/>
+
+
+
+</LinearLayout>
