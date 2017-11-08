@@ -351,8 +351,18 @@
             android:layout_width="match_parent"
             android:id="@+id/Fixtures"
             android:visibility="invisible"
-            android:background="@color/colorPrimaryDark"
             android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:id="@+id/Fixtures_Recycler_View"
+                android:layout_height="wrap_content">
+
+
+
+
+            </android.support.v7.widget.RecyclerView>
+
 
         </LinearLayout>
 

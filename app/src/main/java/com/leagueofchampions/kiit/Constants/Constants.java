@@ -25,5 +25,5 @@ public class Constants {
     public static int ROYAL_WARRIORS=R.drawable.royal_warriors;
     public static HashMap<Integer,String> TEAM_NAMES=new HashMap<Integer, String>();
     public static HashMap<Integer,Integer> TEAM_FLAGS=new HashMap<>();
-
+    public static HashMap<String,Integer>  NAMES_FLAGS=new HashMap<>();
 }
