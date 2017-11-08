@@ -1,5 +1,6 @@
-package com.leagueofchampions.kiit;
+package com.leagueofchampions.kiit.UI;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 
 import com.leagueofchampions.kiit.Adapter.MyViewPagerAdapter;
 import com.leagueofchampions.kiit.Constants.Constants;
+import com.leagueofchampions.kiit.R;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 
@@ -39,6 +41,16 @@ public class Homescreen extends AppCompatActivity {
     private SharedPreferences Favourite_Team;
     private ImageView SET_AS_WALLPAPER;
     private ImageView WALLPAPER;
+
+    //Live Tab's views
+    private ImageView Team1_Image,Team2_Image;
+    private TextView  Team1_Name,Team2_Name;
+    private TextView  Team1_Score,Team2_Score;
+    private TextView  View_Details;
+    private LinearLayout Live_Tab,Standings_Tab,Results_Tab,Fixtures_Tab;
+    private LinearLayout Tabs[];
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,9 +62,29 @@ public class Homescreen extends AppCompatActivity {
         tabLayout=(TabLayout) findViewById(R.id.Tab_layout);
         SET_AS_WALLPAPER=(ImageView) findViewById(R.id.set_as_wallpaper);
         WALLPAPER=(ImageView) findViewById(R.id.Wallpaper);
-
         Left_Button=(ImageButton) findViewById(R.id.move_left);
         Right_Button=(ImageButton) findViewById(R.id.move_right);
+
+        //Live Tab's view
+        Live_Tab=(LinearLayout) findViewById(R.id.Live_Tab);
+        Team1_Image=(ImageView) findViewById(R.id.Team1_Image);
+        Team2_Image=(ImageView) findViewById(R.id.Team2_Image);
+        Team1_Name=(TextView) findViewById(R.id.Team1_Name);
+        Team2_Name=(TextView) findViewById(R.id.Team2_Name);
+        Team1_Score=(TextView) findViewById(R.id.Team1_Score);
+        Team2_Score=(TextView) findViewById(R.id.Team2_score);
+        View_Details=(TextView) findViewById(R.id.View_Details);
+
+        //Standing's Tab
+        Standings_Tab=(LinearLayout) findViewById(R.id.Standings);
+
+        //Result's tab
+        Results_Tab=(LinearLayout) findViewById(R.id.Results);
+
+        //Fixture's tab
+        Fixtures_Tab=(LinearLayout) findViewById(R.id.Fixtures);
+
+
 
 
         Favourite_Team=getSharedPreferences(Constants.Shared_Preferance_Name,MODE_PRIVATE);
@@ -72,6 +104,13 @@ public class Homescreen extends AppCompatActivity {
         Constants.TEAM_FLAGS.put(4,Constants.MIGHTY_BISONS);
         Constants.TEAM_FLAGS.put(5,Constants.PHOENIX_PHANTOMS);
         Constants.TEAM_FLAGS.put(6,Constants.ROYAL_WARRIORS);
+
+        Tabs=new LinearLayout[4];
+        Tabs[0]=Live_Tab;
+        Tabs[1]=Standings_Tab;
+        Tabs[2]=Results_Tab;
+        Tabs[3]=Fixtures_Tab;
+
 
 
 
@@ -94,6 +133,9 @@ public class Homescreen extends AppCompatActivity {
         tabLayout.addTab(Standings);
         tabLayout.addTab(Result);
         tabLayout.addTab(Fixtures);
+
+
+
 
 
         Change_Wallpaper(Constants.NONE);
@@ -133,6 +175,90 @@ public class Homescreen extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Wallpaper saved",Toast.LENGTH_SHORT).show();
             }
         });
+
+
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+                /**
+                 Tabs[0]=Live_Tab;
+                 Tabs[1]=Standings_Tab;
+                 Tabs[2]=Results_Tab;
+                 Tabs[3]=Fixtures_Tab;
+                 */
+
+                if(tab.equals(Live))
+                {
+                    SwitchOnTab(0);
+                }
+                else if(tab.equals(Standings))
+                {
+                    SwitchOnTab(1);
+                }
+                else if(tab.equals(Result))
+                {
+                    SwitchOnTab(2);
+                }
+                else if(tab.equals(Fixtures))
+                {
+                    SwitchOnTab(3);
+                }
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //Live Tab's functions
+        View_Details=(TextView) findViewById(R.id.View_Details);
+        View_Details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(Homescreen.this,Details_activity.class));
+
+            }
+        });
+
+
+    }
+
+    private void SwitchOnTab(int Number) {
+
+        for(int i =0;i<Tabs.length;i++)
+        {
+            if(i==Number)
+            {
+                Tabs[i].setVisibility(View.VISIBLE);
+            }
+            else
+            {
+                Tabs[i].setVisibility(View.INVISIBLE);
+            }
+        }
 
 
     }

@@ -7,7 +7,7 @@
     android:weightSum="100"
     android:background="#fff"
     android:orientation="vertical"
-    tools:context="com.leagueofchampions.kiit.Homescreen">
+    tools:context="com.leagueofchampions.kiit.UI.Homescreen">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -173,13 +173,190 @@
     <android.support.design.widget.TabLayout
         android:id="@+id/Tab_layout"
         app:tabTextColor="#fff"
+        android:layout_weight="8"
         app:tabSelectedTextColor="#fff"
         android:background="@color/AppTheme"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
         app:tabMode="fixed"
+        android:elevation="5dp"
         app:tabGravity="fill"/>
+    <FrameLayout
+        android:layout_weight="32"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:id="@+id/Live_Tab"
+            android:weightSum="100"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.CardView
+                android:layout_margin="10dp"
+                android:elevation="44dp"
+                android:layout_weight="95"
+                app:cardCornerRadius="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <LinearLayout
+                    android:weightSum="100"
+                    android:padding="4dp"
+                    android:orientation="horizontal"
+                    android:background="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:weightSum="100"
+                        android:layout_weight="47.5"
+                        android:layout_width="0dp"
+                        android:orientation="horizontal"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_weight="60"
+                            android:orientation="vertical"
+                            android:layout_width="0dp"
+                            android:gravity="center"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/Team1_Image"
+                                android:src="@drawable/ferocious_knights"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp" />
+
+                            <TextView
+                                android:gravity="center"
+                                android:layout_width="match_parent"
+                                android:textColor="#000"
+                                android:textSize="12sp"
+                                android:id="@+id/Team1_Name"
+                                android:text="Ferocious Knights"
+                                android:layout_height="wrap_content" />
 
 
+                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/Team1_Score"
+                            android:textColor="#000"
+                            android:layout_weight="40"
+                            android:layout_width="0dp"
+                            android:gravity="center"
+                            android:text="245/7 (20)"
+                            android:layout_height="match_parent" />
+
+
+                    </LinearLayout>
+                    <TextView
+                        android:gravity="center"
+                        android:textColor="#000"
+                        android:text=" VS "
+                        android:layout_weight="7"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent">
+
+                    </TextView>
+                    <LinearLayout
+                        android:weightSum="100"
+                        android:layout_weight="47.5"
+                        android:layout_width="0dp"
+                        android:orientation="horizontal"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:textColor="#000"
+                            android:layout_weight="40"
+                            android:layout_width="0dp"
+                            android:gravity="center"
+                            android:text="245/7 (20)"
+                            android:id="@+id/Team2_score"
+                            android:layout_height="match_parent" />
+
+
+
+                        <LinearLayout
+                            android:layout_weight="60"
+                            android:orientation="vertical"
+                            android:layout_width="0dp"
+                            android:gravity="center"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/Team2_Image"
+                                android:src="@drawable/phoenix_phantom"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:text="Phoenix Phantoms"
+                                android:textColor="#000"
+                                android:textSize="12sp"
+                                android:gravity="center"
+                                android:id="@+id/Team2_Name"
+                                android:layout_height="wrap_content" />
+
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+
+
+            </android.support.v7.widget.CardView>
+            <TextView
+                android:gravity="center"
+                android:textColor="#1b02ff"
+                android:id="@+id/View_Details"
+                android:layout_width="match_parent"
+                android:text="View Details"
+                android:layout_height="wrap_content" />
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:id="@+id/Standings"
+            android:visibility="invisible"
+            android:background="@color/colorAccent"
+            android:layout_height="match_parent">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:id="@+id/Results"
+            android:visibility="invisible"
+            android:background="@color/colorPrimary"
+            android:layout_height="match_parent">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:id="@+id/Fixtures"
+            android:visibility="invisible"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="match_parent">
+
+        </LinearLayout>
+
+
+    </FrameLayout>
 
 </LinearLayout>
