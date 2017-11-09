@@ -101,15 +101,15 @@
                 <com.romainpiel.shimmer.ShimmerTextView
                     android:elevation="100dp"
                     android:shadowColor="#b4abab"
-                    android:textSize="22sp"
+                    android:textSize="20sp"
                     android:gravity="center"
+                    android:paddingLeft="40dp"
                     android:id="@+id/Title"
                     android:textColor="#444"
-                    android:layout_marginLeft="30dp"
                     android:textStyle="bold"
                     android:typeface="serif"
                     android:text="League of Champions"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
             </LinearLayout>

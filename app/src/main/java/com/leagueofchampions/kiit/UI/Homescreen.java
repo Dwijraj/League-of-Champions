@@ -66,6 +66,9 @@ public class Homescreen extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_homescreen);
 
+
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+
         Title=(ShimmerTextView) findViewById(R.id.Title);
         tabLayout=(TabLayout) findViewById(R.id.Tab_layout);
         SET_AS_WALLPAPER=(ImageView) findViewById(R.id.set_as_wallpaper);

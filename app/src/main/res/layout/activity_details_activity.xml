@@ -36,9 +36,9 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
+                    android:padding="20dp"
                     android:orientation="vertical"
                     android:background="#fff"
-                    android:padding="20dp"
                     android:weightSum="100"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -49,20 +49,20 @@
                         android:weightSum="100"
                         android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp">
+                        android:layout_height="100dp">
 
                         <LinearLayout
                             android:layout_weight="85"
                             android:gravity="center"
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="0dp">
+                            android:layout_height="wrap_content">
 
                             <ImageView
                                 android:src="@drawable/phoenix_phantom"
-                                android:layout_width="80dp"
+                                android:layout_width="100dp"
                                 android:id="@+id/Team1_On_Pitch"
-                                android:layout_height="80dp" />
+                                android:layout_height="100dp" />
 
                             <TextView
                                 android:textColor="#000"
@@ -74,9 +74,9 @@
 
                             <ImageView
                                 android:src="@drawable/galacticos"
-                                android:layout_width="80dp"
+                                android:layout_width="100dp"
                                 android:id="@+id/Team2_On_Pitch"
-                                android:layout_height="80dp" />
+                                android:layout_height="100dp" />
 
 
                         </LinearLayout>
@@ -86,7 +86,7 @@
                             android:textColor="#000"
                             android:layout_width="match_parent"
                             android:text="6th Match "
-                            android:layout_height="0dp" />
+                            android:layout_height="wrap_content" />
 
 
                     </LinearLayout>
@@ -462,15 +462,14 @@
 
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
             android:id="@+id/Scorecard"
-            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/_h_"
-            android:layout_height="match_parent">
+            android:orientation="vertical"
+            android:visibility="invisible">
 
         </LinearLayout>
-
 
 
     </FrameLayout>
