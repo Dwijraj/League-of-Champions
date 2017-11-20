@@ -22,14 +22,21 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.leagueofchampions.kiit.Adapter.PlayedFixtureRecyclerViewAdapter;
 import com.leagueofchampions.kiit.Adapter.RecyclerViewAdapter;
+import com.leagueofchampions.kiit.Adapter.StandingsRecyclerViewAdapter;
 import com.leagueofchampions.kiit.Constants.Constants;
 import com.leagueofchampions.kiit.Model.Fixture;
+import com.leagueofchampions.kiit.Model.Played_Fixture;
+import com.leagueofchampions.kiit.Model.Team_Stats_Received;
+import com.leagueofchampions.kiit.Utils.Sort_Teams;
+import com.leagueofchampions.kiit.Model.Team_Stats;
 import com.leagueofchampions.kiit.R;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 
 public class Homescreen extends AppCompatActivity {
@@ -56,8 +63,19 @@ public class Homescreen extends AppCompatActivity {
     private RecyclerView Matches;
     private RecyclerViewAdapter recyclerViewAdapter;
     private ArrayList<Fixture> Match_List;
-
     private DatabaseReference Fixtures_ref;
+
+    //Result Tab's Views
+    private RecyclerView Played_Fixtures;
+    private PlayedFixtureRecyclerViewAdapter playedFixtureRecyclerViewAdapter;
+    private ArrayList<Played_Fixture> Played_Matches;
+    private DatabaseReference Played_Fixtures_Referance;
+
+    //Standing Tab's Views
+    private RecyclerView Standings_Recycler_View;
+    private StandingsRecyclerViewAdapter standingsRecyclerViewAdapter;
+    private ArrayList<Team_Stats> Teams;
+    private DatabaseReference Standings_Ref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,9 +106,98 @@ public class Homescreen extends AppCompatActivity {
 
         //Standing's Tab
         Standings_Tab=(LinearLayout) findViewById(R.id.Standings);
+        Standings_Recycler_View=(RecyclerView) findViewById(R.id.Standings_Recycler_View);
+        Standings_Recycler_View.setLayoutManager(new LinearLayoutManager(this));
+        Teams=new ArrayList<>();
+        Standings_Ref=FirebaseDatabase.getInstance().getReference().child("Standings");
+
+        Standings_Ref.addValueEventListener(new ValueEventListener() {
+            @Override
+
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Teams.clear();
+                for(DataSnapshot D:dataSnapshot.getChildren())
+                {
+                    Team_Stats_Received Team=D.getValue(Team_Stats_Received.class);
+                    Team_Stats Team_=new Team_Stats();
+
+                    Team_.setDraw(Integer.parseInt(Team.getDraw()));
+                    Team_.setLoss(Integer.parseInt(Team.getLoss()));
+
+                    Team_.setMatches(Integer.parseInt(Team.getMatches()));
+                    Team_.setPoints(Integer.parseInt(Team.getPoints()));
+                    Team_.setName(Team.getName());
+                    Team_.setWins(Integer.parseInt(Team.getWins()));
+                    Team_.setNRR(Float.parseFloat(Team.getNRR()));
+                    Teams.add(Team_);
+
+
+                    Log.v("DwijrajMaina",Team.getMatches()+":"+Team_.getPoints());
+
+                }
+
+                Collections.sort(Teams,new Sort_Teams());
+                Collections.reverse(Teams);
+
+                Log.v("DwijrajTeams",Teams.size()+":"+Teams.get(0).getName());
+
+                for(int i=0;i<Teams.size();i++)
+                {
+                    Teams.get(i).setPos(i+1);
+                }
+                standingsRecyclerViewAdapter=new StandingsRecyclerViewAdapter(Teams, Homescreen.this);
+                Standings_Recycler_View.setAdapter(standingsRecyclerViewAdapter);
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         //Result's tab
         Results_Tab=(LinearLayout) findViewById(R.id.Results);
+        Played_Fixtures=(RecyclerView) findViewById(R.id.Played_Fixtures_Recycler_View);
+        Played_Fixtures.setLayoutManager(new LinearLayoutManager(this));
+        Played_Matches=new ArrayList<>();
+        Played_Fixtures_Referance=FirebaseDatabase.getInstance().getReference().child("PlayedFixtures");
+
+        Played_Fixtures_Referance.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+
+                Played_Matches.clear();
+                for(DataSnapshot D:dataSnapshot.getChildren())
+                {
+                    Played_Fixture Match=D.getValue(Played_Fixture.class);
+                    Match.setSerial_Number(D.getKey().toString());
+
+                    Log.e("Dwijraj",Match.getDate()+"...");
+
+                    String[] Data=Match.getDate().split("-");
+
+
+
+                    Match.setDate(Data[2]+"/"+Data[1]+"/"+Data[0]);
+                    Played_Matches.add(Match);
+
+                }
+                playedFixtureRecyclerViewAdapter=new PlayedFixtureRecyclerViewAdapter(Played_Matches, Homescreen.this);
+                Played_Fixtures.setAdapter(playedFixtureRecyclerViewAdapter);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
 
         //Fixture's tab
         Fixtures_Tab=(LinearLayout) findViewById(R.id.Fixtures);
@@ -235,13 +342,6 @@ public class Homescreen extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
 
-                /**
-                 Tabs[0]=Live_Tab;
-                 Tabs[1]=Standings_Tab;
-                 Tabs[2]=Results_Tab;
-                 Tabs[3]=Fixtures_Tab;
-                 */
-
                 if(tab.equals(Live))
                 {
                     SwitchOnTab(0);
@@ -271,19 +371,6 @@ public class Homescreen extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         //Live Tab's functions
         View_Details=(TextView) findViewById(R.id.View_Details);

@@ -13,18 +13,44 @@ public class Team_Stats {
     private int Loss;
     private int Draw;
     private int Points;
+    private int Wins;
     private float NRR;
+    private int Pos;
+
 
     public Team_Stats() {
     }
 
-    public Team_Stats(String name, int Matches, int loss, int draw, int points, float NRR) {
+    @Override
+    public String toString() {
+        return this.Name+this.Matches+this.Loss+this.Draw+this.Points+this.Wins+this.NRR+this.Pos;
+    }
+
+    public Team_Stats(String name, int Matches, int loss, int draw, int points, int Wins, float NRR, int Pos) {
         Name = name;
-        Matches = Matches;
+        this.Matches = Matches;
         Loss = loss;
         Draw = draw;
         Points = points;
-        NRR = NRR;
+        this.NRR = NRR;
+        this.Wins=Wins;
+        this.Pos=Pos;
+    }
+
+    public int getPos() {
+        return Pos;
+    }
+
+    public void setPos(int pos) {
+        Pos = pos;
+    }
+
+    public int getWins() {
+        return Wins;
+    }
+
+    public void setWins(int wins) {
+        Wins = wins;
     }
 
     public String getName() {
@@ -40,7 +66,7 @@ public class Team_Stats {
     }
 
     public void setMatches(int Matches) {
-        Matches = Matches;
+        this.Matches = Matches;
     }
 
     public int getLoss() {
@@ -72,23 +98,6 @@ public class Team_Stats {
     }
 
     public void setNRR(float NRR) {
-        NRR = NRR;
+        this.NRR = NRR;
     }
 }
-class Sort_Teams implements Comparator<Team_Stats>
-{
-    @Override
-    public int compare(Team_Stats o1, Team_Stats o2) {
-        
-        if(o1.getPoints()!=o2.getPoints())
-        {
-            return o1.getPoints()-o2.getPoints();
-        }
-        else if(o1.getNRR()!=o2.getNRR())
-        {
-            return (int)(o1.getNRR()-o2.getNRR());
-        }
-        return 0;
-    }
-}
-

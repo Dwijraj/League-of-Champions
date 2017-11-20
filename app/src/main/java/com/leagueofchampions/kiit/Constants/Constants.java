@@ -14,6 +14,8 @@ public class Constants {
     public static String RIGHT="Right";
     public static String NONE="ON_BOOT";
 
+    public static String NOT_PLAYED="Not Played";
+
     public static String Shared_Preferance_Name="Favourite Team";
     public static String Favourite_Team="Team";
 
