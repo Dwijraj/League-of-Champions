@@ -25,12 +25,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp">
 
-                <ImageView
-                    android:scaleType="fitXY"
+                <LinearLayout
+                    android:gravity="center"
                     android:layout_width="match_parent"
-                    android:src="@drawable/_h_"
-                    android:id="@+id/Wallpaper"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:padding="12dp"
+                        android:scaleType="fitXY"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/_h_"
+                        android:id="@+id/Wallpaper"
+                        android:layout_height="match_parent" />
+
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -226,7 +235,6 @@
 
                             <ImageView
                                 android:id="@+id/Team1_Image"
-                                android:src="@drawable/ferocious_knights"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp" />
 
@@ -236,7 +244,6 @@
                                 android:textColor="#000"
                                 android:textSize="12sp"
                                 android:id="@+id/Team1_Name"
-                                android:text="Ferocious Knights"
                                 android:layout_height="wrap_content" />
 
 
@@ -247,7 +254,6 @@
                             android:layout_weight="40"
                             android:layout_width="0dp"
                             android:gravity="center"
-                            android:text="245/7 (20)"
                             android:layout_height="match_parent" />
 
 
@@ -273,7 +279,6 @@
                             android:layout_weight="40"
                             android:layout_width="0dp"
                             android:gravity="center"
-                            android:text="245/7 (20)"
                             android:id="@+id/Team2_score"
                             android:layout_height="match_parent" />
 
@@ -288,12 +293,10 @@
 
                             <ImageView
                                 android:id="@+id/Team2_Image"
-                                android:src="@drawable/phoenix_phantom"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp" />
                             <TextView
                                 android:layout_width="match_parent"
-                                android:text="Phoenix Phantoms"
                                 android:textColor="#000"
                                 android:textSize="12sp"
                                 android:gravity="center"

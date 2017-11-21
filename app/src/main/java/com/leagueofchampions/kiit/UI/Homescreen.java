@@ -1,5 +1,6 @@
 package com.leagueofchampions.kiit.UI;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
@@ -28,6 +29,7 @@ import com.leagueofchampions.kiit.Adapter.StandingsRecyclerViewAdapter;
 import com.leagueofchampions.kiit.Constants.Constants;
 import com.leagueofchampions.kiit.Model.Fixture;
 import com.leagueofchampions.kiit.Model.Played_Fixture;
+import com.leagueofchampions.kiit.Model.Score;
 import com.leagueofchampions.kiit.Model.Team_Stats_Received;
 import com.leagueofchampions.kiit.Utils.Sort_Teams;
 import com.leagueofchampions.kiit.Model.Team_Stats;
@@ -49,14 +51,16 @@ public class Homescreen extends AppCompatActivity {
     private SharedPreferences Favourite_Team;
     private ImageView SET_AS_WALLPAPER;
     private ImageView WALLPAPER;
+    public static Activity GLOBAL_ACTIVITY;
+    private LinearLayout Live_Tab,Standings_Tab,Results_Tab,Fixtures_Tab;
+    private LinearLayout Tabs[];
 
     //Live Tab's views
     private ImageView Team1_Image,Team2_Image;
     private TextView  Team1_Name,Team2_Name;
     private TextView  Team1_Score,Team2_Score;
     private TextView  View_Details;
-    private LinearLayout Live_Tab,Standings_Tab,Results_Tab,Fixtures_Tab;
-    private LinearLayout Tabs[];
+    private DatabaseReference Team1Score,Team2Score,Team1Name,Team2Name;
 
 
     //Fixture Tab's Views
@@ -84,6 +88,7 @@ public class Homescreen extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_homescreen);
 
+        GLOBAL_ACTIVITY=this;
 
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
@@ -103,6 +108,10 @@ public class Homescreen extends AppCompatActivity {
         Team1_Score=(TextView) findViewById(R.id.Team1_Score);
         Team2_Score=(TextView) findViewById(R.id.Team2_score);
         View_Details=(TextView) findViewById(R.id.View_Details);
+        Team1Name=FirebaseDatabase.getInstance().getReference().child("Live").child("Team1");
+        Team2Name=FirebaseDatabase.getInstance().getReference().child("Live").child("Team2");
+        Team1Score=FirebaseDatabase.getInstance().getReference().child("Live").child("Team1Score");
+        Team2Score=FirebaseDatabase.getInstance().getReference().child("Live").child("Team2Score");
 
         //Standing's Tab
         Standings_Tab=(LinearLayout) findViewById(R.id.Standings);
@@ -178,6 +187,7 @@ public class Homescreen extends AppCompatActivity {
                     Match.setSerial_Number(D.getKey().toString());
 
                     Log.e("Dwijraj",Match.getDate()+"...");
+
 
                     String[] Data=Match.getDate().split("-");
 
@@ -281,7 +291,7 @@ public class Homescreen extends AppCompatActivity {
 
 
         Standings=tabLayout.newTab();
-        Standings.setText("Standings");
+        Standings.setText("Table");
 
         Result=tabLayout.newTab();
         Result.setText("Results");
@@ -378,10 +388,84 @@ public class Homescreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(Homescreen.this,Details_activity.class));
+                if(!(Details_activity.Team1.equals("N/A")||Details_activity.Team2.equals("N/A")))
+                    startActivity(new Intent(Homescreen.this,Details_activity.class));
+                else
+                    Toast.makeText(Homescreen.this,"Connect to Internet",Toast.LENGTH_LONG).show();
+            }
+        });
+        Team1Name.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Details_activity.Team1=dataSnapshot.getValue(String.class);
+
+                Team1_Name.setText(dataSnapshot.getValue(String.class));
+                //Uncomment latter
+                Team1_Image.setImageResource(Constants.NAMES_FLAGS.get(dataSnapshot.getValue(String.class)));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });
+
+        Team2Name.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+                Details_activity.Team2=dataSnapshot.getValue(String.class);
+
+                Team2_Name.setText(dataSnapshot.getValue(String.class));
+                //Uncomment latter
+                Team2_Image.setImageResource(Constants.NAMES_FLAGS.get(dataSnapshot.getValue(String.class)));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        Team1Score.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                //for(DataSnapshot d :dataSnapshot.getChildren())
+                //    Log.v("ScoreDwijraj",d.getValue()+"/");
+                Score TeamScore=dataSnapshot.getValue(Score.class);
+                //Uncomment latter
+                Team1_Score.setText(TeamScore.getRuns()+"/"+TeamScore.getWickets()+"("+TeamScore.getOvers()+")");
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+        Team2Score.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+                Score TeamScore=dataSnapshot.getValue(Score.class);
+                //Uncomment latter
+                Team2_Score.setText(TeamScore.getRuns()+"/"+TeamScore.getWickets()+"("+TeamScore.getOvers()+")");
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
 
 
     }

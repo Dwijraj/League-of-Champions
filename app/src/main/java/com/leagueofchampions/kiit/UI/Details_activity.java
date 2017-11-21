@@ -12,6 +12,12 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.leagueofchampions.kiit.Constants.Constants;
 import com.leagueofchampions.kiit.R;
 
 public class Details_activity extends AppCompatActivity {
@@ -29,7 +35,10 @@ public class Details_activity extends AppCompatActivity {
     private TextView Batsman1_Name,Batsman1_Runs,Batsman1_Balls,Batsman1_4,Batsman1_6,Batsman1_StrikeRate;
     private TextView Batsman2_Name,Batsman2_Runs,Batsman2_Balls,Batsman2_4,Batsman2_6,Batsman2_StrikeRate;
     private TextView Bowler_Name,Bowler_Runs,Bowler_Maiden,Bowler_Over,Bowler_wickets,Bowler_Economy;
-    private TextView Score;
+    private TextView Score,MatchN;
+    private DatabaseReference MatchNo,BattingTeam,BowlingTeam;
+    public static String Team1="N/A";
+    public static String Team2="N/A";
 
 
 
@@ -41,6 +50,9 @@ public class Details_activity extends AppCompatActivity {
         setContentView(R.layout.activity_details_activity);
 
         tabLayout=(TabLayout) findViewById(R.id.Tab_layout_details);
+        BattingTeam=FirebaseDatabase.getInstance().getReference().child("Live").child("BattingTeam");
+        BowlingTeam=FirebaseDatabase.getInstance().getReference().child("Live").child("BowlingTeam");
+        MatchNo=FirebaseDatabase.getInstance().getReference().child("Live").child("MatchNo");
 
         OnPitch=tabLayout.newTab();
         Scorecard=tabLayout.newTab();
@@ -49,7 +61,7 @@ public class Details_activity extends AppCompatActivity {
         Scorecard.setText("Scorecard");
 
         tabLayout.addTab(OnPitch);
-        tabLayout.addTab(Scorecard);
+       // tabLayout.addTab(Scorecard);
 
         //Scorecard
         Scorecard_Root=(LinearLayout) findViewById(R.id.Scorecard);
@@ -87,6 +99,11 @@ public class Details_activity extends AppCompatActivity {
         Bowler_Economy=(TextView) findViewById(R.id.Bowler_Economy);
 
         Score=(TextView) findViewById(R.id.Score_On_Pitch);
+        MatchN=(TextView) findViewById(R.id.MatchNo);
+
+        First_Team.setImageResource(Constants.NAMES_FLAGS.get(Team1));
+        Second_Team.setImageResource(Constants.NAMES_FLAGS.get(Team2));
+
 
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -117,7 +134,48 @@ public class Details_activity extends AppCompatActivity {
             }
         });
 
+        MatchNo.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
+                MatchN.setText("Match number : "+dataSnapshot.getValue(String.class));
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        BattingTeam.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Batting_Team.setImageResource(Constants.NAMES_FLAGS.get(dataSnapshot.getValue(String.class)));
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        BowlingTeam.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+                Bowling_Team.setImageResource(Constants.NAMES_FLAGS.get(dataSnapshot.getValue(String.class)));
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
 }

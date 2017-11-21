@@ -59,7 +59,6 @@
                             android:layout_height="wrap_content">
 
                             <ImageView
-                                android:src="@drawable/phoenix_phantom"
                                 android:layout_width="100dp"
                                 android:id="@+id/Team1_On_Pitch"
                                 android:layout_height="100dp" />
@@ -73,7 +72,6 @@
 
 
                             <ImageView
-                                android:src="@drawable/galacticos"
                                 android:layout_width="100dp"
                                 android:id="@+id/Team2_On_Pitch"
                                 android:layout_height="100dp" />
@@ -83,15 +81,28 @@
                         <TextView
                             android:gravity="center"
                             android:layout_weight="15"
+                            android:id="@+id/MatchNo"
+                            android:textStyle="bold"
                             android:textColor="#000"
                             android:layout_width="match_parent"
-                            android:text="6th Match "
                             android:layout_height="wrap_content" />
+
+                        <TextView
+
+                            android:textSize="32sp"
+                            android:textColor="#000"
+                            android:elevation="30dp"
+                            android:layout_width="match_parent"
+                            android:layout_weight="40"
+                            android:gravity="center"
+                            android:text="34/1(8)"
+                            android:id="@+id/Score_On_Pitch"
+                            android:layout_height="wrap_content" />
+
 
 
                     </LinearLayout>
                     <ImageView
-                        android:src="@drawable/phoenix_phantom"
                         android:id="@+id/Batting_Team_Image"
                         android:layout_width="80dp"
                         android:layout_height="80dp" />
@@ -296,7 +307,6 @@
 
                     </TableLayout>
                     <ImageView
-                        android:src="@drawable/galacticos"
                         android:layout_width="80dp"
                         android:id="@+id/Bowling_Team_Image"
                         android:layout_height="80dp" />
@@ -435,18 +445,6 @@
 
 
                     </TableLayout>
-
-                    <TextView
-
-                        android:textSize="32sp"
-                        android:textColor="#000"
-                        android:elevation="30dp"
-                        android:layout_width="match_parent"
-                        android:layout_weight="40"
-                        android:gravity="center"
-                        android:text="34/1(8)"
-                        android:id="@+id/Score_On_Pitch"
-                        android:layout_height="wrap_content" />
 
 
 

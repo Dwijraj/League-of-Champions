@@ -1,6 +1,7 @@
 package com.leagueofchampions.kiit.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import android.widget.Toast;
 import com.leagueofchampions.kiit.Constants.Constants;
 import com.leagueofchampions.kiit.Model.Played_Fixture;
 import com.leagueofchampions.kiit.R;
+import com.leagueofchampions.kiit.UI.Homescreen;
+import com.leagueofchampions.kiit.UI.Scorecard;
 
 import java.util.ArrayList;
 
@@ -59,6 +62,7 @@ public class PlayedFixtureRecyclerViewAdapter extends RecyclerView.Adapter<Playe
                 public void onClick(View v) {
                     //Show scorecard
                     Log.v("DwijrajBh","Clicked");
+                    Homescreen.GLOBAL_ACTIVITY.startActivity(new Intent(Homescreen.GLOBAL_ACTIVITY, Scorecard.class));
                 }
             });
         }

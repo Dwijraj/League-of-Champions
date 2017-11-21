@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:screenOrientation="portrait"
             android:name=".UI.Homescreen"
+            android:screenOrientation="portrait"
             android:theme="@style/ApplicationTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,10 +20,12 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".UI.Details_activity"
             android:screenOrientation="portrait"
-            android:theme="@style/ApplicationTheme"
-            android:name=".UI.Details_activity">
-        </activity>
+            android:theme="@style/ApplicationTheme"></activity>
+        <activity android:name=".UI.Scorecard"
+            android:screenOrientation="portrait"
+            ></activity>
     </application>
 
 </manifest>
