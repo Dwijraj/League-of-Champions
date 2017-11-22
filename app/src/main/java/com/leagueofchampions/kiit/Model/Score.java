@@ -8,14 +8,24 @@ public class Score {
     private String Runs;
     private String Wickets;
     private String Overs;
+    private String Extras;
 
-    public Score(String runs, String wickets, String overs) {
+    public Score(String runs, String wickets, String overs,String Extras) {
         Runs = runs;
         Wickets = wickets;
         Overs = overs;
+        this.Extras=Extras;
     }
 
     public Score() {
+    }
+
+    public String getExtras() {
+        return Extras;
+    }
+
+    public void setExtras(String extras) {
+        Extras = extras;
     }
 
     public String getRuns() {

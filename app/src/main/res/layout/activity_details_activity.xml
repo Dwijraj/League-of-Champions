@@ -95,7 +95,6 @@
                             android:layout_width="match_parent"
                             android:layout_weight="40"
                             android:gravity="center"
-                            android:text="34/1(8)"
                             android:id="@+id/Score_On_Pitch"
                             android:layout_height="wrap_content" />
 
@@ -118,10 +117,10 @@
                             >
 
                             <TextView
+                                android:gravity="center"
                                 android:textColor="#000"
                                 android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="30"
+                                android:layout_weight="10"
                                 android:text="Batsman"
                                 />
 
@@ -130,16 +129,16 @@
                                 android:textColor="#000"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="10"
-                                android:text="Runs"
+                                android:layout_weight="20"
+                                android:text="R"
                                 />
                             <TextView
 
                                 android:textColor="#000"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="10"
-                                android:text="Balls"
+                                android:layout_weight="20"
+                                android:text="B"
                                 />
 
 
@@ -148,7 +147,7 @@
                                 android:textColor="#000"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="10"
+                                android:layout_weight="15"
                                 android:text="4"
                                 />
                             <TextView
@@ -156,7 +155,7 @@
                                 android:textColor="#000"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="10"
+                                android:layout_weight="15"
                                 android:text="6"
                                 />
 
@@ -165,8 +164,8 @@
                                 android:textColor="#000"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="30"
-                                android:text="Strike Rate"
+                                android:layout_weight="20"
+                                android:text="SR"
                                 />
 
 
@@ -182,8 +181,7 @@
                                 android:id="@+id/Batsman1_Name"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="30"
-                                android:text="Arnab"
+                                android:layout_weight="10"
                                 />
 
                             <TextView
@@ -192,8 +190,7 @@
                                 android:id="@+id/Batsman1_Runs"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="10"
-                                android:text="10"
+                                android:layout_weight="20"
                                 />
                             <TextView
 
@@ -201,8 +198,7 @@
                                 android:id="@+id/Batsman1_Balls"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="10"
-                                android:text="2"
+                                android:layout_weight="20"
                                 />
 
 
@@ -212,8 +208,7 @@
                                 android:id="@+id/Batsman1_4s"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="10"
-                                android:text="1"
+                                android:layout_weight="15"
                                 />
                             <TextView
 
@@ -221,8 +216,7 @@
                                 android:id="@+id/Batsman1_6s"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="10"
-                                android:text="1"
+                                android:layout_weight="15"
                                 />
 
                             <TextView
@@ -231,8 +225,7 @@
                                 android:id="@+id/Batsman1_StrikeRate"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="30"
-                                android:text="800"
+                                android:layout_weight="20"
                                 />
 
 
@@ -248,8 +241,7 @@
                                 android:id="@+id/Batsman2_Name"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="30"
-                                android:text="Arnab"
+                                android:layout_weight="10"
                                 />
 
                             <TextView
@@ -258,8 +250,7 @@
                                 android:id="@+id/Batsman2_Runs"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="10"
-                                android:text="10"
+                                android:layout_weight="20"
                                 />
                             <TextView
 
@@ -267,8 +258,7 @@
                                 android:id="@+id/Batsman2_Balls"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="10"
-                                android:text="2"
+                                android:layout_weight="20"
                                 />
 
 
@@ -278,8 +268,7 @@
                                 android:id="@+id/Batsman2_4s"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="10"
-                                android:text="1"
+                                android:layout_weight="15"
                                 />
                             <TextView
 
@@ -287,8 +276,7 @@
                                 android:id="@+id/Batsman2_6s"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="10"
-                                android:text="1"
+                                android:layout_weight="15"
                                 />
 
                             <TextView
@@ -297,8 +285,7 @@
                                 android:id="@+id/Batsman2_StrikeRate"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="30"
-                                android:text="800"
+                                android:layout_weight="20"
                                 />
 
 
@@ -325,7 +312,7 @@
                                 android:textColor="#000"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="30"
+                                android:layout_weight="10"
                                 android:text="Bowler"
                                 />
 
@@ -334,16 +321,16 @@
                                 android:textColor="#000"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="10"
-                                android:text="Over"
+                                android:layout_weight="20"
+                                android:text="O"
                                 />
                             <TextView
 
                                 android:textColor="#000"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="10"
-                                android:text="Maiden"
+                                android:layout_weight="20"
+                                android:text="Maid"
                                 />
 
 
@@ -352,16 +339,16 @@
                                 android:textColor="#000"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="10"
-                                android:text="Runs"
+                                android:layout_weight="15"
+                                android:text="R"
                                 />
                             <TextView
 
                                 android:textColor="#000"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="10"
-                                android:text="Wickets"
+                                android:layout_weight="15"
+                                android:text="W"
                                 />
 
                             <TextView
@@ -369,8 +356,8 @@
                                 android:textColor="#000"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="30"
-                                android:text="Economy"
+                                android:layout_weight="20"
+                                android:text="Econ"
                                 />
 
 
@@ -386,8 +373,7 @@
                                 android:id="@+id/Bowler_Name"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="30"
-                                android:text="Arnab"
+                                android:layout_weight="10"
                                 />
 
                             <TextView
@@ -396,8 +382,7 @@
                                 android:id="@+id/Bowler_Overs"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="10"
-                                android:text="10"
+                                android:layout_weight="20"
                                 />
                             <TextView
 
@@ -405,8 +390,7 @@
                                 android:id="@+id/Bowler_Maiden"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="10"
-                                android:text="2"
+                                android:layout_weight="20"
                                 />
 
 
@@ -416,8 +400,7 @@
                                 android:id="@+id/Bowler_Runs"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="10"
-                                android:text="1"
+                                android:layout_weight="15"
                                 />
                             <TextView
 
@@ -425,18 +408,15 @@
                                 android:id="@+id/Bowler_Wickets"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="10"
-                                android:text="1"
+                                android:layout_weight="15"
                                 />
 
                             <TextView
-
                                 android:textColor="#000"
                                 android:id="@+id/Bowler_Economy"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:layout_weight="30"
-                                android:text="800"
+                                android:layout_weight="20"
                                 />
 
 

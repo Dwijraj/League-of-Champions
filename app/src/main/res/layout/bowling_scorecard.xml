@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:weightSum="100"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <TextView
+
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_weight="20"
+            android:id="@+id/Bowler"
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_weight="10"
+            android:id="@+id/Over"
+            />
+        <TextView
+
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_weight="20"
+            android:id="@+id/Maiden"
+            />
+
+
+        <TextView
+
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_weight="10"
+            android:id="@+id/Runs"
+            />
+        <TextView
+
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_weight="20"
+            android:id="@+id/Wickets"
+            />
+
+        <TextView
+
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:id="@+id/Econ"
+            android:layout_weight="20"
+            />
+
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
