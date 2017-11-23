@@ -8,449 +8,509 @@
     android:orientation="vertical"
     tools:context="com.leagueofchampions.kiit.UI.Details_activity">
 
-    <android.support.design.widget.TabLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:id="@+id/Tab_layout_details"
-        android:background="@color/AppTheme"
-        android:elevation="14dp"
-        app:tabGravity="fill"
-        android:layout_height="50dp">
-
-    </android.support.design.widget.TabLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:background="#fff"
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:id="@+id/On_Pitch_ID"
+            android:background="#fff"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
 
-            <android.support.v7.widget.CardView
+            <android.support.design.widget.TabLayout
                 android:layout_width="match_parent"
-                android:elevation="32dp"
-                android:background="#fff"
-                app:cardCornerRadius="14dp"
+                android:id="@+id/Tab_layout_details"
+                android:background="@color/AppTheme"
+                android:elevation="14dp"
+                app:tabGravity="fill"
+                android:layout_height="50dp">
+
+            </android.support.design.widget.TabLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+
                 <LinearLayout
-                    android:padding="20dp"
-                    android:orientation="vertical"
-                    android:background="#fff"
-                    android:weightSum="100"
+                    android:id="@+id/On_Pitch_ID"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-
-                    <LinearLayout
-                        android:layout_weight="50"
-                        android:weightSum="100"
-                        android:orientation="vertical"
+                    <android.support.v7.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="100dp">
+                        android:elevation="32dp"
+                        android:background="#fff"
+                        app:cardCornerRadius="14dp"
+                        android:layout_height="match_parent">
 
                         <LinearLayout
-                            android:layout_weight="85"
-                            android:gravity="center"
-                            android:orientation="horizontal"
+                            android:orientation="vertical"
+                            android:background="#fff"
+                            android:weightSum="100"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="match_parent">
 
-                            <ImageView
+
+                            <LinearLayout
+                                android:layout_weight="40"
+                                android:weightSum="100"
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp">
+
+                                <LinearLayout
+                                    android:layout_weight="85"
+                                    android:gravity="center"
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <FrameLayout
+                                        android:layout_width="100dp"
+                                        android:layout_height="100dp">
+
+                                        <ImageView
+                                            android:layout_width="100dp"
+                                            android:id="@+id/Team1_On_Pitch"
+                                            android:layout_height="100dp" />
+
+                                        <ProgressBar
+                                            android:layout_width="100dp"
+                                            android:id="@+id/Team1_On_Pitch_Progress_Bar"
+                                            android:layout_height="100dp" />
+
+                                    </FrameLayout>
+
+                                    <TextView
+                                        android:textColor="#000"
+                                        android:layout_width="wrap_content"
+                                        android:gravity="center"
+                                        android:text="VS"
+                                        android:layout_height="match_parent" />
+
+
+                                    <FrameLayout
+                                        android:layout_width="100dp"
+                                        android:layout_height="100dp">
+
+                                        <ImageView
+                                            android:layout_width="100dp"
+                                            android:id="@+id/Team2_On_Pitch"
+                                            android:layout_height="100dp" />
+
+                                        <ProgressBar
+                                            android:layout_width="100dp"
+                                            android:id="@+id/Team2_On_Pitch_Progress_Bar"
+                                            android:layout_height="100dp" />
+
+                                    </FrameLayout>
+
+
+                                </LinearLayout>
+                                <TextView
+                                    android:gravity="center"
+                                    android:layout_weight="15"
+                                    android:id="@+id/MatchNo"
+                                    android:textStyle="bold"
+                                    android:textColor="#000"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+
+                                <TextView
+
+                                    android:textSize="32sp"
+                                    android:textColor="#000"
+                                    android:elevation="30dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_weight="40"
+                                    android:gravity="center"
+                                    android:id="@+id/Score_On_Pitch"
+                                    android:layout_height="wrap_content" />
+
+
+
+                            </LinearLayout>
+                            <FrameLayout
                                 android:layout_width="100dp"
-                                android:id="@+id/Team1_On_Pitch"
-                                android:layout_height="100dp" />
+                                android:layout_height="100dp">
 
-                            <TextView
-                                android:textColor="#000"
-                                android:layout_width="wrap_content"
-                                android:gravity="center"
-                                android:text="VS"
-                                android:layout_height="match_parent" />
+                                <ImageView
+                                    android:id="@+id/Batting_Team_Image"
+                                    android:layout_width="100dp"
+                                    android:layout_height="100dp" />
+
+                                <ProgressBar
+                                    android:layout_width="100dp"
+                                    android:id="@+id/Batting_Team_Progress_Bar"
+                                    android:layout_height="100dp" />
+
+                            </FrameLayout>
+
+                            <TableLayout
+                                android:orientation="vertical"
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TableRow
+                                    android:weightSum="100"
+                                    >
+
+                                    <TextView
+                                        android:gravity="center"
+                                        android:textColor="#000"
+                                        android:textStyle="bold"
+                                        android:layout_weight="10"
+                                        android:text="Batsman"
+                                        />
+
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="20"
+                                        android:text="R"
+                                        />
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="20"
+                                        android:text="B"
+                                        />
 
 
-                            <ImageView
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="15"
+                                        android:text="4"
+                                        />
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="15"
+                                        android:text="6"
+                                        />
+
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="20"
+                                        android:text="SR"
+                                        />
+
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:weightSum="100"
+                                    >
+
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:id="@+id/Batsman1_Name"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="10"
+                                        />
+
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:id="@+id/Batsman1_Runs"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="20"
+                                        />
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:id="@+id/Batsman1_Balls"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="20"
+                                        />
+
+
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:id="@+id/Batsman1_4s"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="15"
+                                        />
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:id="@+id/Batsman1_6s"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="15"
+                                        />
+
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:id="@+id/Batsman1_StrikeRate"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="20"
+                                        />
+
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:weightSum="100"
+                                    >
+
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:id="@+id/Batsman2_Name"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="10"
+                                        />
+
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:id="@+id/Batsman2_Runs"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="20"
+                                        />
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:id="@+id/Batsman2_Balls"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="20"
+                                        />
+
+
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:id="@+id/Batsman2_4s"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="15"
+                                        />
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:id="@+id/Batsman2_6s"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="15"
+                                        />
+
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:id="@+id/Batsman2_StrikeRate"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="20"
+                                        />
+
+
+
+                                </TableRow>
+
+                            </TableLayout>
+                            <FrameLayout
                                 android:layout_width="100dp"
-                                android:id="@+id/Team2_On_Pitch"
-                                android:layout_height="100dp" />
+                                android:layout_height="100dp">
+
+                                <ImageView
+                                    android:id="@+id/Bowling_Team_Image"
+                                    android:layout_width="100dp"
+                                    android:layout_height="100dp" />
+
+                                <ProgressBar
+                                    android:layout_width="100dp"
+                                    android:id="@+id/Bowling_Team_Progress_Bar"
+                                    android:layout_height="100dp" />
+
+                            </FrameLayout>
+
+                            <TableLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TableRow
+                                    android:weightSum="100"
+                                    >
+
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="10"
+                                        android:text="Bowler"
+                                        />
+
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="20"
+                                        android:text="O"
+                                        />
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="20"
+                                        android:text="Maid"
+                                        />
+
+
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="15"
+                                        android:text="R"
+                                        />
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="15"
+                                        android:text="W"
+                                        />
+
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="20"
+                                        android:text="Econ"
+                                        />
+
+
+
+                                </TableRow>
+                                <TableRow
+                                    android:weightSum="100"
+                                    >
+
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:id="@+id/Bowler_Name"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="10"
+                                        />
+
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:id="@+id/Bowler_Overs"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="20"
+                                        />
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:id="@+id/Bowler_Maiden"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="20"
+                                        />
+
+
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:id="@+id/Bowler_Runs"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="15"
+                                        />
+                                    <TextView
+
+                                        android:textColor="#000"
+                                        android:id="@+id/Bowler_Wickets"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="15"
+                                        />
+
+                                    <TextView
+                                        android:textColor="#000"
+                                        android:id="@+id/Bowler_Economy"
+                                        android:textStyle="bold"
+                                        android:gravity="center"
+                                        android:layout_weight="20"
+                                        />
+
+
+
+                                </TableRow>
+
+
+                            </TableLayout>
+
+
 
 
                         </LinearLayout>
-                        <TextView
-                            android:gravity="center"
-                            android:layout_weight="15"
-                            android:id="@+id/MatchNo"
-                            android:textStyle="bold"
-                            android:textColor="#000"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
 
-                        <TextView
 
-                            android:textSize="32sp"
-                            android:textColor="#000"
-                            android:elevation="30dp"
-                            android:layout_width="match_parent"
-                            android:layout_weight="40"
-                            android:gravity="center"
-                            android:id="@+id/Score_On_Pitch"
-                            android:layout_height="wrap_content" />
 
-
-
-                    </LinearLayout>
-                    <ImageView
-                        android:id="@+id/Batting_Team_Image"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp" />
-
-                    <TableLayout
-                        android:orientation="vertical"
-                        android:layout_marginTop="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TableRow
-                            android:weightSum="100"
-                            >
-
-                            <TextView
-                                android:gravity="center"
-                                android:textColor="#000"
-                                android:textStyle="bold"
-                                android:layout_weight="10"
-                                android:text="Batsman"
-                                />
-
-                            <TextView
-
-                                android:textColor="#000"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="20"
-                                android:text="R"
-                                />
-                            <TextView
-
-                                android:textColor="#000"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="20"
-                                android:text="B"
-                                />
-
-
-                            <TextView
-
-                                android:textColor="#000"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="15"
-                                android:text="4"
-                                />
-                            <TextView
-
-                                android:textColor="#000"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="15"
-                                android:text="6"
-                                />
-
-                            <TextView
-
-                                android:textColor="#000"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="20"
-                                android:text="SR"
-                                />
-
-
-
-                        </TableRow>
-                        <TableRow
-                            android:weightSum="100"
-                            >
-
-                            <TextView
-
-                                android:textColor="#000"
-                                android:id="@+id/Batsman1_Name"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="10"
-                                />
-
-                            <TextView
-
-                                android:textColor="#000"
-                                android:id="@+id/Batsman1_Runs"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="20"
-                                />
-                            <TextView
-
-                                android:textColor="#000"
-                                android:id="@+id/Batsman1_Balls"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="20"
-                                />
-
-
-                            <TextView
-
-                                android:textColor="#000"
-                                android:id="@+id/Batsman1_4s"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="15"
-                                />
-                            <TextView
-
-                                android:textColor="#000"
-                                android:id="@+id/Batsman1_6s"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="15"
-                                />
-
-                            <TextView
-
-                                android:textColor="#000"
-                                android:id="@+id/Batsman1_StrikeRate"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="20"
-                                />
-
-
-
-                        </TableRow>
-                        <TableRow
-                            android:weightSum="100"
-                            >
-
-                            <TextView
-
-                                android:textColor="#000"
-                                android:id="@+id/Batsman2_Name"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="10"
-                                />
-
-                            <TextView
-
-                                android:textColor="#000"
-                                android:id="@+id/Batsman2_Runs"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="20"
-                                />
-                            <TextView
-
-                                android:textColor="#000"
-                                android:id="@+id/Batsman2_Balls"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="20"
-                                />
-
-
-                            <TextView
-
-                                android:textColor="#000"
-                                android:id="@+id/Batsman2_4s"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="15"
-                                />
-                            <TextView
-
-                                android:textColor="#000"
-                                android:id="@+id/Batsman2_6s"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="15"
-                                />
-
-                            <TextView
-
-                                android:textColor="#000"
-                                android:id="@+id/Batsman2_StrikeRate"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="20"
-                                />
-
-
-
-                        </TableRow>
-
-                    </TableLayout>
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:id="@+id/Bowling_Team_Image"
-                        android:layout_height="80dp" />
-
-                    <TableLayout
-                        android:layout_marginTop="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TableRow
-                            android:weightSum="100"
-                            >
-
-                            <TextView
-
-                                android:textColor="#000"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="10"
-                                android:text="Bowler"
-                                />
-
-                            <TextView
-
-                                android:textColor="#000"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="20"
-                                android:text="O"
-                                />
-                            <TextView
-
-                                android:textColor="#000"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="20"
-                                android:text="Maid"
-                                />
-
-
-                            <TextView
-
-                                android:textColor="#000"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="15"
-                                android:text="R"
-                                />
-                            <TextView
-
-                                android:textColor="#000"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="15"
-                                android:text="W"
-                                />
-
-                            <TextView
-
-                                android:textColor="#000"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="20"
-                                android:text="Econ"
-                                />
-
-
-
-                        </TableRow>
-                        <TableRow
-                            android:weightSum="100"
-                            >
-
-                            <TextView
-
-                                android:textColor="#000"
-                                android:id="@+id/Bowler_Name"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="10"
-                                />
-
-                            <TextView
-
-                                android:textColor="#000"
-                                android:id="@+id/Bowler_Overs"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="20"
-                                />
-                            <TextView
-
-                                android:textColor="#000"
-                                android:id="@+id/Bowler_Maiden"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="20"
-                                />
-
-
-                            <TextView
-
-                                android:textColor="#000"
-                                android:id="@+id/Bowler_Runs"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="15"
-                                />
-                            <TextView
-
-                                android:textColor="#000"
-                                android:id="@+id/Bowler_Wickets"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="15"
-                                />
-
-                            <TextView
-                                android:textColor="#000"
-                                android:id="@+id/Bowler_Economy"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:layout_weight="20"
-                                />
-
-
-
-                        </TableRow>
-
-
-                    </TableLayout>
-
-
+                    </android.support.v7.widget.CardView>
 
 
                 </LinearLayout>
 
 
+                <LinearLayout
+                    android:id="@+id/Scorecard"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/_h_"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
 
-            </android.support.v7.widget.CardView>
+                </LinearLayout>
+
+
+            </FrameLayout>
+
 
 
         </LinearLayout>
 
-
-        <LinearLayout
-            android:id="@+id/Scorecard"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/_h_"
-            android:orientation="vertical"
-            android:visibility="invisible">
-
-        </LinearLayout>
-
-
-    </FrameLayout>
+    </ScrollView>
 
 
 </LinearLayout>

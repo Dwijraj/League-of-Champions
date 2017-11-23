@@ -24,6 +24,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/ApplicationTheme"></activity>
         <activity android:name=".UI.Scorecard"
+            android:theme="@style/ApplicationTheme"
             android:screenOrientation="portrait"
             ></activity>
     </application>

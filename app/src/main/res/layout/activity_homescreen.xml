@@ -31,7 +31,6 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:padding="12dp"
                         android:scaleType="fitXY"
                         android:layout_width="match_parent"
                         android:src="@drawable/_h_"
@@ -54,7 +53,7 @@
                         android:layout_height="match_parent">
 
                         <ImageButton
-
+                            android:visibility="invisible"
                             android:background="#d9d4d4"
                             android:id="@+id/move_left"
                             android:layout_width="wrap_content"
@@ -77,6 +76,7 @@
                         android:layout_height="match_parent">
 
                         <ImageButton
+                            android:visibility="invisible"
                             android:background="#d9d4d4"
                             android:id="@+id/move_right"
                             android:layout_width="wrap_content"
@@ -170,6 +170,7 @@
             android:layout_height="40dp">
 
             <ImageView
+                android:visibility="invisible"
                 android:id="@+id/set_as_wallpaper"
                 android:src="@drawable/home_page_set"
                 android:layout_width="40dp"
@@ -233,10 +234,21 @@
                             android:gravity="center"
                             android:layout_height="match_parent">
 
-                            <ImageView
-                                android:id="@+id/Team1_Image"
+                            <FrameLayout
                                 android:layout_width="100dp"
-                                android:layout_height="100dp" />
+                                android:layout_height="100dp">
+
+                                <ImageView
+                                    android:id="@+id/Team1_Image"
+                                    android:layout_width="100dp"
+                                    android:layout_height="100dp" />
+                                <ProgressBar
+                                    android:layout_width="100dp"
+                                    android:id="@+id/Team1_Image_Progress"
+                                    android:layout_height="100dp" />
+
+
+                            </FrameLayout>
 
                             <TextView
                                 android:gravity="center"
@@ -291,10 +303,21 @@
                             android:gravity="center"
                             android:layout_height="match_parent">
 
-                            <ImageView
-                                android:id="@+id/Team2_Image"
+                            <FrameLayout
                                 android:layout_width="100dp"
-                                android:layout_height="100dp" />
+                                android:layout_height="100dp">
+
+                                <ImageView
+                                    android:id="@+id/Team2_Image"
+                                    android:layout_width="100dp"
+                                    android:layout_height="100dp" />
+                                <ProgressBar
+                                    android:layout_width="100dp"
+                                    android:id="@+id/Team2_Image_Progress"
+                                    android:layout_height="100dp" />
+
+
+                            </FrameLayout>
                             <TextView
                                 android:layout_width="match_parent"
                                 android:textColor="#000"
@@ -330,108 +353,127 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="vertical"
+        <FrameLayout
             android:layout_width="match_parent"
             android:id="@+id/Standings"
             android:visibility="invisible"
             android:layout_height="match_parent">
 
+
             <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:weightSum="120"
-                android:layout_height="wrap_content">
 
-                <TextView
-                    android:text="Pos"
-                    android:textSize="17sp"
-                    android:textColor="#000"
-                    android:layout_width="0dp"
-                    android:layout_weight="10"
-                    android:layout_height="wrap_content" />
-                <View
-                    android:gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_weight="10"
-                    android:layout_height="20dp" />
+                android:layout_height="match_parent">
 
-                <TextView
-                    android:text="Team"
-                    android:textSize="15sp"
-                    android:textColor="#000"
-                    android:gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_weight="30"
-                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="120"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:gravity="center"
-                    android:text="M"
-                    android:textSize="17sp"
-                    android:textColor="#000"
-                    android:layout_width="0dp"
-                    android:layout_weight="10"
-                    android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="Pos"
+                        android:textSize="17sp"
+                        android:textColor="#000"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:layout_height="wrap_content" />
+                    <View
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:layout_height="20dp" />
 
+                    <TextView
+                        android:text="Team"
+                        android:textSize="15sp"
+                        android:textColor="#000"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="30"
+                        android:layout_height="wrap_content" />
 
-                <TextView
-                    android:gravity="center"
-                    android:text="P"
-                    android:textSize="17sp"
-                    android:textColor="#000"
-                    android:layout_width="0dp"
-                    android:layout_weight="10"
-                    android:layout_height="wrap_content" />
+                    <TextView
+                        android:gravity="center"
+                        android:text="M"
+                        android:textSize="17sp"
+                        android:textColor="#000"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:layout_height="wrap_content" />
 
 
+                    <TextView
+                        android:gravity="center"
+                        android:text="P"
+                        android:textSize="17sp"
+                        android:textColor="#000"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:layout_height="wrap_content" />
 
-                <TextView
-                    android:text="W"
-                    android:gravity="center"
-                    android:textSize="17sp"
-                    android:textColor="#000"
-                    android:layout_width="0dp"
-                    android:layout_weight="10"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:text="L"
-                    android:gravity="center"
-                    android:textSize="17sp"
-                    android:textColor="#000"
-                    android:layout_width="0dp"
-                    android:layout_weight="10"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:text="D"
-                    android:gravity="center"
-                    android:textSize="17sp"
-                    android:textColor="#000"
-                    android:layout_width="0dp"
-                    android:layout_weight="10"
-                    android:layout_height="wrap_content" />
 
-                <TextView
-                    android:text="NRR"
-                    android:gravity="center"
-                    android:textSize="17sp"
-                    android:textColor="#000"
-                    android:layout_width="0dp"
-                    android:layout_weight="20"
-                    android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:text="W"
+                        android:gravity="center"
+                        android:textSize="17sp"
+                        android:textColor="#000"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="L"
+                        android:gravity="center"
+                        android:textSize="17sp"
+                        android:textColor="#000"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="D"
+                        android:gravity="center"
+                        android:textSize="17sp"
+                        android:textColor="#000"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:text="NRR"
+                        android:gravity="center"
+                        android:textSize="17sp"
+                        android:textColor="#000"
+                        android:layout_width="0dp"
+                        android:layout_weight="20"
+                        android:layout_height="wrap_content" />
+
+
+                </LinearLayout>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:id="@+id/Standings_Recycler_View"
+                        android:layout_height="match_parent">
+
+                    </android.support.v7.widget.RecyclerView>
+
+                </FrameLayout>
+
 
 
             </LinearLayout>
-            <android.support.v7.widget.RecyclerView
+            <ProgressBar
                 android:layout_width="match_parent"
-                android:id="@+id/Standings_Recycler_View"
-                android:layout_height="match_parent">
-
-            </android.support.v7.widget.RecyclerView>
+                android:id="@+id/Standings_ProgressBar"
+                android:layout_height="match_parent" />
 
 
-
-        </LinearLayout>
+        </FrameLayout>
 
         <LinearLayout
             android:orientation="vertical"
@@ -440,15 +482,25 @@
             android:visibility="invisible"
             android:layout_height="match_parent">
 
-            <android.support.v7.widget.RecyclerView
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:id="@+id/Played_Fixtures_Recycler_View"
                 android:layout_height="wrap_content">
 
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:id="@+id/Played_Fixtures_Recycler_View"
+                    android:layout_height="wrap_content">
 
 
 
-            </android.support.v7.widget.RecyclerView>
+
+                </android.support.v7.widget.RecyclerView>
+                <ProgressBar
+                    android:layout_width="match_parent"
+                    android:minHeight="300dp"
+                    android:id="@+id/Played_Fixtures_Progress_Bar"
+                    android:layout_height="match_parent" />
+            </FrameLayout>
 
         </LinearLayout>
 
@@ -459,15 +511,27 @@
             android:visibility="invisible"
             android:layout_height="match_parent">
 
-            <android.support.v7.widget.RecyclerView
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:id="@+id/Fixtures_Recycler_View"
                 android:layout_height="wrap_content">
 
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:id="@+id/Fixtures_Recycler_View"
+                    android:layout_height="wrap_content">
 
 
 
-            </android.support.v7.widget.RecyclerView>
+
+                </android.support.v7.widget.RecyclerView>
+
+                <ProgressBar
+                    android:layout_width="match_parent"
+                    android:minHeight="300dp"
+                    android:id="@+id/Fixtures_Progress_Bar"
+                    android:layout_height="wrap_content" />
+
+            </FrameLayout>
 
 
         </LinearLayout>

@@ -9,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +40,7 @@ public class Details_activity extends AppCompatActivity {
     private TextView Batsman1_Name,Batsman1_Runs,Batsman1_Balls,Batsman1_4,Batsman1_6,Batsman1_StrikeRate;
     private TextView Batsman2_Name,Batsman2_Runs,Batsman2_Balls,Batsman2_4,Batsman2_6,Batsman2_StrikeRate;
     private TextView Bowler_Name,Bowler_Runs,Bowler_Maiden,Bowler_Over,Bowler_wickets,Bowler_Economy;
+    private ProgressBar Team1_On_Pitch_Progress_Bar,Team2_On_Pitch_Progress_Bar,Batting_Team_ProgressBar,Bowling_Team_ProgressBar;
     private TextView Score,MatchN;
     private DatabaseReference MatchNo,BattingTeam,BowlingTeam;
     private DatabaseReference Batsman1,Batsman2,Bowler,ScoreRef;
@@ -109,8 +111,16 @@ public class Details_activity extends AppCompatActivity {
         Score=(TextView) findViewById(R.id.Score_On_Pitch);
         MatchN=(TextView) findViewById(R.id.MatchNo);
 
+        Team1_On_Pitch_Progress_Bar=(ProgressBar) findViewById(R.id.Team1_On_Pitch_Progress_Bar);
+        Team2_On_Pitch_Progress_Bar=(ProgressBar) findViewById(R.id.Team2_On_Pitch_Progress_Bar);
+        Batting_Team_ProgressBar=(ProgressBar) findViewById(R.id.Batting_Team_Progress_Bar);
+        Bowling_Team_ProgressBar=(ProgressBar) findViewById(R.id.Bowling_Team_Progress_Bar);
+
         First_Team.setImageResource(Constants.NAMES_FLAGS.get(Team1));
         Second_Team.setImageResource(Constants.NAMES_FLAGS.get(Team2));
+
+        Team1_On_Pitch_Progress_Bar.setVisibility(View.INVISIBLE);
+        Team2_On_Pitch_Progress_Bar.setVisibility(View.INVISIBLE);
 
 
 
@@ -160,6 +170,7 @@ public class Details_activity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
+                Batting_Team_ProgressBar.setVisibility(View.INVISIBLE);
                 Batting_Team.setImageResource(Constants.NAMES_FLAGS.get(dataSnapshot.getValue(String.class)));
 
             }
@@ -175,6 +186,7 @@ public class Details_activity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
 
+                Bowling_Team_ProgressBar.setVisibility(View.INVISIBLE);
                 Bowling_Team.setImageResource(Constants.NAMES_FLAGS.get(dataSnapshot.getValue(String.class)));
 
             }
@@ -267,7 +279,7 @@ public class Details_activity extends AppCompatActivity {
 
                 try {
                     com.leagueofchampions.kiit.Model.Score score = dataSnapshot.getValue(com.leagueofchampions.kiit.Model.Score.class);
-                    Score.setText(score.getRuns() + "/" + score.getWickets() + "(" + score.getOvers() + ")");
+                    Score.setText(score.getRuns() + "/" + score.getWickets() + "(" + score.getOvers() + ")"+" Extras "+score.getExtras());
                 }
                 catch (Exception e)
                 {

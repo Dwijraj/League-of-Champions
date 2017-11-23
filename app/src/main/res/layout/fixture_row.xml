@@ -4,7 +4,6 @@
     android:paddingLeft="3dp"
     android:paddingRight="3dp"
     android:paddingBottom="2dp"
-    android:layout_marginLeft="3dp"
     android:background="#000"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -15,7 +14,7 @@
         android:layout_marginTop="2dp"
         android:background="#fff"
         android:elevation="44dp"
-        android:padding="5dp">
+       >
 
         <LinearLayout
 
@@ -29,7 +28,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="01/12/17  8:00am"
                 android:textColor="#000"
                 android:textSize="18sp" />
 

@@ -12,9 +12,11 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,8 +54,8 @@ public class Homescreen extends AppCompatActivity {
     private ImageView SET_AS_WALLPAPER;
     private ImageView WALLPAPER;
     public static Activity GLOBAL_ACTIVITY;
-    private LinearLayout Live_Tab,Standings_Tab,Results_Tab,Fixtures_Tab;
-    private LinearLayout Tabs[];
+    private View Live_Tab,Standings_Tab,Results_Tab,Fixtures_Tab;
+    private View Tabs[];
 
     //Live Tab's views
     private ImageView Team1_Image,Team2_Image;
@@ -61,6 +63,7 @@ public class Homescreen extends AppCompatActivity {
     private TextView  Team1_Score,Team2_Score;
     private TextView  View_Details;
     private DatabaseReference Team1Score,Team2Score,Team1Name,Team2Name;
+    private ProgressBar Team1_Image_Progress,Team2_Image_Progress;
 
 
     //Fixture Tab's Views
@@ -68,18 +71,21 @@ public class Homescreen extends AppCompatActivity {
     private RecyclerViewAdapter recyclerViewAdapter;
     private ArrayList<Fixture> Match_List;
     private DatabaseReference Fixtures_ref;
+    private ProgressBar Fixtures_Progress_Bar;
 
     //Result Tab's Views
     private RecyclerView Played_Fixtures;
     private PlayedFixtureRecyclerViewAdapter playedFixtureRecyclerViewAdapter;
     private ArrayList<Played_Fixture> Played_Matches;
     private DatabaseReference Played_Fixtures_Referance;
+    private ProgressBar Played_Fixtures_progress_Bar;
 
     //Standing Tab's Views
     private RecyclerView Standings_Recycler_View;
     private StandingsRecyclerViewAdapter standingsRecyclerViewAdapter;
     private ArrayList<Team_Stats> Teams;
     private DatabaseReference Standings_Ref;
+    private ProgressBar Standings_Progress_Bar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,13 +118,17 @@ public class Homescreen extends AppCompatActivity {
         Team2Name=FirebaseDatabase.getInstance().getReference().child("Live").child("Team2");
         Team1Score=FirebaseDatabase.getInstance().getReference().child("Live").child("Team1Score");
         Team2Score=FirebaseDatabase.getInstance().getReference().child("Live").child("Team2Score");
+        Team1_Image_Progress=(ProgressBar) findViewById(R.id.Team1_Image_Progress);
+        Team2_Image_Progress=(ProgressBar) findViewById(R.id.Team2_Image_Progress);
+
 
         //Standing's Tab
-        Standings_Tab=(LinearLayout) findViewById(R.id.Standings);
+        Standings_Tab=(FrameLayout) findViewById(R.id.Standings);
         Standings_Recycler_View=(RecyclerView) findViewById(R.id.Standings_Recycler_View);
         Standings_Recycler_View.setLayoutManager(new LinearLayoutManager(this));
         Teams=new ArrayList<>();
         Standings_Ref=FirebaseDatabase.getInstance().getReference().child("Standings");
+        Standings_Progress_Bar=(ProgressBar) findViewById(R.id.Standings_ProgressBar);
 
         Standings_Ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -146,18 +156,19 @@ public class Homescreen extends AppCompatActivity {
 
                 }
 
-                Collections.sort(Teams,new Sort_Teams());
-                Collections.reverse(Teams);
+                if(Teams.size()!=0) {
+                    Collections.sort(Teams, new Sort_Teams());
+                    Collections.reverse(Teams);
 
-                Log.v("DwijrajTeams",Teams.size()+":"+Teams.get(0).getName());
+                    Log.v("DwijrajTeams", Teams.size() + ":" + Teams.get(0).getName());
 
-                for(int i=0;i<Teams.size();i++)
-                {
-                    Teams.get(i).setPos(i+1);
+                    for (int i = 0; i < Teams.size(); i++) {
+                        Teams.get(i).setPos(i + 1);
+                    }
+                    Standings_Progress_Bar.setVisibility(View.INVISIBLE);
+                    standingsRecyclerViewAdapter = new StandingsRecyclerViewAdapter(Teams, Homescreen.this);
+                    Standings_Recycler_View.setAdapter(standingsRecyclerViewAdapter);
                 }
-                standingsRecyclerViewAdapter=new StandingsRecyclerViewAdapter(Teams, Homescreen.this);
-                Standings_Recycler_View.setAdapter(standingsRecyclerViewAdapter);
-
 
             }
 
@@ -173,7 +184,7 @@ public class Homescreen extends AppCompatActivity {
         Played_Fixtures.setLayoutManager(new LinearLayoutManager(this));
         Played_Matches=new ArrayList<>();
         Played_Fixtures_Referance=FirebaseDatabase.getInstance().getReference().child("PlayedFixtures");
-
+        Played_Fixtures_progress_Bar=(ProgressBar) findViewById(R.id.Played_Fixtures_Progress_Bar);
         Played_Fixtures_Referance.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -197,9 +208,11 @@ public class Homescreen extends AppCompatActivity {
                     Played_Matches.add(Match);
 
                 }
-                playedFixtureRecyclerViewAdapter=new PlayedFixtureRecyclerViewAdapter(Played_Matches, Homescreen.this);
-                Played_Fixtures.setAdapter(playedFixtureRecyclerViewAdapter);
-
+                if(Played_Matches.size()!=0) {
+                    Played_Fixtures_progress_Bar.setVisibility(View.INVISIBLE);
+                    playedFixtureRecyclerViewAdapter = new PlayedFixtureRecyclerViewAdapter(Played_Matches, Homescreen.this);
+                    Played_Fixtures.setAdapter(playedFixtureRecyclerViewAdapter);
+                }
             }
 
             @Override
@@ -212,6 +225,7 @@ public class Homescreen extends AppCompatActivity {
         //Fixture's tab
         Fixtures_Tab=(LinearLayout) findViewById(R.id.Fixtures);
         Fixtures_ref= FirebaseDatabase.getInstance().getReference().child("Fixtures");
+        Fixtures_Progress_Bar=(ProgressBar) findViewById(R.id.Fixtures_Progress_Bar);
         Matches=(RecyclerView) findViewById(R.id.Fixtures_Recycler_View);
         Matches.setLayoutManager(new LinearLayoutManager(this));
         Match_List=new ArrayList<>();
@@ -234,12 +248,15 @@ public class Homescreen extends AppCompatActivity {
                     Match_List.add(Match);
 
                 }
-                Log.v("Dwijraj1","WOrking4");
-                recyclerViewAdapter=new RecyclerViewAdapter(Match_List, Homescreen.this);
-                Log.v("Dwijraj1","WOrkin51");
-                Matches.setAdapter(recyclerViewAdapter);
-                Log.v("Dwijraj1","WOrking6");
 
+                if(Match_List.size()!=0) {
+                    Log.v("Dwijraj1", "WOrking4");
+                    recyclerViewAdapter = new RecyclerViewAdapter(Match_List, Homescreen.this);
+                    Log.v("Dwijraj1", "WOrkin51");
+                    Fixtures_Progress_Bar.setVisibility(View.INVISIBLE);
+                    Matches.setAdapter(recyclerViewAdapter);
+                    Log.v("Dwijraj1", "WOrking6");
+                }
             }
 
             @Override
@@ -275,7 +292,7 @@ public class Homescreen extends AppCompatActivity {
         Constants.TEAM_FLAGS.put(5,Constants.PHOENIX_PHANTOMS);
         Constants.TEAM_FLAGS.put(6,Constants.ROYAL_WARRIORS);
 
-        Tabs=new LinearLayout[4];
+        Tabs=new View[4];
         Tabs[0]=Live_Tab;
         Tabs[1]=Standings_Tab;
         Tabs[2]=Results_Tab;
@@ -388,21 +405,32 @@ public class Homescreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(!(Details_activity.Team1.equals("N/A")||Details_activity.Team2.equals("N/A")))
-                    startActivity(new Intent(Homescreen.this,Details_activity.class));
-                else
-                    Toast.makeText(Homescreen.this,"Connect to Internet",Toast.LENGTH_LONG).show();
+                try {
+                    if (!(Details_activity.Team1.equals("N/A") || Details_activity.Team2.equals("N/A")))
+                        startActivity(new Intent(Homescreen.this, Details_activity.class));
+                    else
+                        Toast.makeText(Homescreen.this, "Connect to Internet", Toast.LENGTH_LONG).show();
+                }
+                catch (Exception e)
+                {
+                    Toast.makeText(Homescreen.this, "No details to display", Toast.LENGTH_LONG).show();
+                }
             }
         });
         Team1Name.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                Details_activity.Team1=dataSnapshot.getValue(String.class);
+                try {
+                    Details_activity.Team1 = dataSnapshot.getValue(String.class);
 
-                Team1_Name.setText(dataSnapshot.getValue(String.class));
-                //Uncomment latter
-                Team1_Image.setImageResource(Constants.NAMES_FLAGS.get(dataSnapshot.getValue(String.class)));
+                    Team1_Image_Progress.setVisibility(View.INVISIBLE);
+                    Team1_Name.setText(dataSnapshot.getValue(String.class));
+                    //Uncomment latter
+                    Team1_Image.setImageResource(Constants.NAMES_FLAGS.get(dataSnapshot.getValue(String.class)));
+                }
+                catch (Exception e)
+                {}
             }
 
             @Override
@@ -416,11 +444,16 @@ public class Homescreen extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
 
-                Details_activity.Team2=dataSnapshot.getValue(String.class);
+                try {
+                    Details_activity.Team2 = dataSnapshot.getValue(String.class);
 
-                Team2_Name.setText(dataSnapshot.getValue(String.class));
-                //Uncomment latter
-                Team2_Image.setImageResource(Constants.NAMES_FLAGS.get(dataSnapshot.getValue(String.class)));
+                    Team2_Image_Progress.setVisibility(View.INVISIBLE);
+                    Team2_Name.setText(dataSnapshot.getValue(String.class));
+                    //Uncomment latter
+                    Team2_Image.setImageResource(Constants.NAMES_FLAGS.get(dataSnapshot.getValue(String.class)));
+                }
+                catch (Exception e)
+                {}
             }
 
             @Override
@@ -435,9 +468,13 @@ public class Homescreen extends AppCompatActivity {
 
                 //for(DataSnapshot d :dataSnapshot.getChildren())
                 //    Log.v("ScoreDwijraj",d.getValue()+"/");
-                Score TeamScore=dataSnapshot.getValue(Score.class);
-                //Uncomment latter
-                Team1_Score.setText(TeamScore.getRuns()+"/"+TeamScore.getWickets()+"("+TeamScore.getOvers()+")");
+                try {
+                    Score TeamScore = dataSnapshot.getValue(Score.class);
+                    //Uncomment latter
+                    Team1_Score.setText(TeamScore.getRuns() + "/" + TeamScore.getWickets() + "(" + TeamScore.getOvers() + ")");
+                }
+                catch (Exception e)
+                {}
 
             }
 
@@ -453,9 +490,13 @@ public class Homescreen extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
 
-                Score TeamScore=dataSnapshot.getValue(Score.class);
-                //Uncomment latter
-                Team2_Score.setText(TeamScore.getRuns()+"/"+TeamScore.getWickets()+"("+TeamScore.getOvers()+")");
+                try {
+                    Score TeamScore = dataSnapshot.getValue(Score.class);
+                    //Uncomment latter
+                    Team2_Score.setText(TeamScore.getRuns() + "/" + TeamScore.getWickets() + "(" + TeamScore.getOvers() + ")");
+                }
+                catch (Exception e)
+                {}
 
             }
 

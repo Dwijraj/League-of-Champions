@@ -2,6 +2,7 @@ package com.leagueofchampions.kiit.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -60,12 +61,42 @@ public class PlayedFixtureRecyclerViewAdapter extends RecyclerView.Adapter<Playe
         holder.Date_Time.setText("Match:- "+Match.getSerial_Number()+"  Date:-  "+Match.getDate()+" "+Match.getTime());
         holder.Team1.setImageResource(Constants.NAMES_FLAGS.get(Match.getTeam1()));
         holder.Team2.setImageResource(Constants.NAMES_FLAGS.get(Match.getTeam2()));
+        holder.Result.setText(Match.getResult());
+        holder.Holder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Scorecard.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
 
-        if(!Match.getResult().equals(Constants.NOT_PLAYED))
-        {
+                        // Log.v("Maina",Match.getSerial_Number()+dataSnapshot.hasChild(Match.getSerial_Number()));
 
-            holder.Result.setText(Match.getResult()+"(Click here to get more info)");
-            holder.Result.setOnClickListener(new View.OnClickListener() {
+
+                        if(dataSnapshot.hasChild(Match.getSerial_Number()))
+                        {
+                            Homescreen.GLOBAL_ACTIVITY.startActivity(new Intent(Homescreen.GLOBAL_ACTIVITY, Scorecard.class).putExtra("MatchNo",Match.getSerial_Number()));
+                        }
+                        else
+                        {
+                            Toast.makeText(Homescreen.GLOBAL_ACTIVITY,"Scorecard not updated yet",Toast.LENGTH_SHORT).show();
+                        }
+                          /* for(DataSnapshot d :dataSnapshot.getChildren())
+                           {
+                               Log.v("Maina",d.getKey()+Match.getSerial_Number()+dataSnapshot.hasChild(Match.getSerial_Number()));
+
+                           }*/
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
+        });
+        holder.Result.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //Show scorecard
@@ -74,15 +105,22 @@ public class PlayedFixtureRecyclerViewAdapter extends RecyclerView.Adapter<Playe
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
 
+                           // Log.v("Maina",Match.getSerial_Number()+dataSnapshot.hasChild(Match.getSerial_Number()));
+
+
                             if(dataSnapshot.hasChild(Match.getSerial_Number()))
                             {
-                                Log.v("DwijrajBh","Clicked");
-                                Homescreen.GLOBAL_ACTIVITY.startActivity(new Intent(Homescreen.GLOBAL_ACTIVITY, Scorecard.class));
+                                Homescreen.GLOBAL_ACTIVITY.startActivity(new Intent(Homescreen.GLOBAL_ACTIVITY, Scorecard.class).putExtra("MatchNo",Match.getSerial_Number()));
                             }
                             else
                             {
                                 Toast.makeText(Homescreen.GLOBAL_ACTIVITY,"Scorecard not updated yet",Toast.LENGTH_SHORT).show();
                             }
+                          /* for(DataSnapshot d :dataSnapshot.getChildren())
+                           {
+                               Log.v("Maina",d.getKey()+Match.getSerial_Number()+dataSnapshot.hasChild(Match.getSerial_Number()));
+
+                           }*/
 
                         }
 
@@ -95,11 +133,7 @@ public class PlayedFixtureRecyclerViewAdapter extends RecyclerView.Adapter<Playe
 
                 }
             });
-        }
-        else
-        {
-            holder.Result.setText(Match.getResult());
-        }
+
     }
 
     @Override
@@ -113,10 +147,12 @@ public class PlayedFixtureRecyclerViewAdapter extends RecyclerView.Adapter<Playe
         private ImageView Team2;
         private TextView  Date_Time;
         private TextView  Result;
+        private android.support.v7.widget.CardView Holder;
 
         public Holder(View itemView) {
             super(itemView);
 
+            Holder=(CardView) itemView.findViewById(R.id.Holder);
             Result=(TextView) itemView.findViewById(R.id.Result_String);
             Team1=(ImageView) itemView.findViewById(R.id.Team1_Fixtures);
             Team2=(ImageView) itemView.findViewById(R.id.Team2_Fixtures);
