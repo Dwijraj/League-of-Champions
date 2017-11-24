@@ -170,9 +170,12 @@ public class Details_activity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                Batting_Team_ProgressBar.setVisibility(View.INVISIBLE);
-                Batting_Team.setImageResource(Constants.NAMES_FLAGS.get(dataSnapshot.getValue(String.class)));
-
+                try {
+                    Batting_Team_ProgressBar.setVisibility(View.INVISIBLE);
+                    Batting_Team.setImageResource(Constants.NAMES_FLAGS.get(dataSnapshot.getValue(String.class)));
+                }
+                catch (Exception e)
+                {}
             }
 
             @Override
@@ -186,9 +189,12 @@ public class Details_activity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
 
-                Bowling_Team_ProgressBar.setVisibility(View.INVISIBLE);
-                Bowling_Team.setImageResource(Constants.NAMES_FLAGS.get(dataSnapshot.getValue(String.class)));
-
+                try {
+                    Bowling_Team_ProgressBar.setVisibility(View.INVISIBLE);
+                    Bowling_Team.setImageResource(Constants.NAMES_FLAGS.get(dataSnapshot.getValue(String.class)));
+                }
+                catch (Exception e)
+                {}
             }
 
             @Override

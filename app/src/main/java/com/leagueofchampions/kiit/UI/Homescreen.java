@@ -192,22 +192,24 @@ public class Homescreen extends AppCompatActivity {
 
 
                 Played_Matches.clear();
-                for(DataSnapshot D:dataSnapshot.getChildren())
-                {
-                    Played_Fixture Match=D.getValue(Played_Fixture.class);
-                    Match.setSerial_Number(D.getKey().toString());
+                try {
+                    for (DataSnapshot D : dataSnapshot.getChildren()) {
+                        Played_Fixture Match = D.getValue(Played_Fixture.class);
+                        Match.setSerial_Number(D.getKey().toString());
 
-                    Log.e("Dwijraj",Match.getDate()+"...");
-
-
-                    String[] Data=Match.getDate().split("-");
+                        Log.e("Dwijraj", Match.getDate() + "...");
 
 
+                        String[] Data = Match.getDate().split("-");
 
-                    Match.setDate(Data[2]+"/"+Data[1]+"/"+Data[0]);
-                    Played_Matches.add(Match);
 
+                        Match.setDate(Data[2] + "/" + Data[1] + "/" + Data[0]);
+                        Played_Matches.add(Match);
+
+                    }
                 }
+                catch (Exception e)
+                {}
                 if(Played_Matches.size()!=0) {
                     Played_Fixtures_progress_Bar.setVisibility(View.INVISIBLE);
                     playedFixtureRecyclerViewAdapter = new PlayedFixtureRecyclerViewAdapter(Played_Matches, Homescreen.this);

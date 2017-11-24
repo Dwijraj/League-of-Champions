@@ -117,9 +117,12 @@ public class Scorecard extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                Team1_Name.setText(dataSnapshot.getValue(String.class));
-                Team1_Icon.setImageResource(Constants.NAMES_FLAGS.get(dataSnapshot.getValue(String.class)));
-                Team1ImageProgressBar.setVisibility(View.INVISIBLE);
+                try {
+                    Team1_Name.setText(dataSnapshot.getValue(String.class));
+                    Team1_Icon.setImageResource(Constants.NAMES_FLAGS.get(dataSnapshot.getValue(String.class)));
+                    Team1ImageProgressBar.setVisibility(View.INVISIBLE);
+                }catch (Exception e)
+                {}
             }
 
             @Override
@@ -131,9 +134,13 @@ public class Scorecard extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                Team2_Name.setText(dataSnapshot.getValue(String.class));
-                Team2_Icon.setImageResource(Constants.NAMES_FLAGS.get(dataSnapshot.getValue(String.class)));
-                Team2ImageProgressBar.setVisibility(View.INVISIBLE);
+                try {
+                    Team2_Name.setText(dataSnapshot.getValue(String.class));
+                    Team2_Icon.setImageResource(Constants.NAMES_FLAGS.get(dataSnapshot.getValue(String.class)));
+                    Team2ImageProgressBar.setVisibility(View.INVISIBLE);
+                }
+                catch (Exception e)
+                {}
             }
 
             @Override
@@ -208,14 +215,20 @@ public class Scorecard extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                Team1Batsmen.clear();
-                for (DataSnapshot d : dataSnapshot.getChildren())
-                {
+                //Bugs
+                try {
+                    Team1Batsmen.clear();
+                    for (DataSnapshot d : dataSnapshot.getChildren()) {
 
                         Batsman batsman = d.getValue(Batsman.class);
                         Team1Batsmen.add(batsman);
-                }
+                    }
 
+                }
+                catch (Exception e)
+                {
+
+                }
                 if(Team1Batsmen.size()!=0) {
                     Team1BattingAdapter = new BatsmanRecyclerViewAdapter(Team1Batsmen, Scorecard.this);
                     Team1_Batting.setAdapter(Team1BattingAdapter);
@@ -235,11 +248,16 @@ public class Scorecard extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 Team2Batsmen.clear();
-                for(DataSnapshot d :dataSnapshot.getChildren())
+                try {
+                    for (DataSnapshot d : dataSnapshot.getChildren()) {
+
+                        Batsman batsman = d.getValue(Batsman.class);
+                        Team2Batsmen.add(batsman);
+                    }
+                }
+                catch (Exception e)
                 {
 
-                    Batsman batsman=d.getValue(Batsman.class);
-                    Team2Batsmen.add(batsman);
                 }
 
                 if(Team2Batsmen.size()!=0) {
@@ -259,14 +277,16 @@ public class Scorecard extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 Team1Bowlers.clear();
-                for(DataSnapshot d :dataSnapshot.getChildren())
-                {
+                try {
+                    for (DataSnapshot d : dataSnapshot.getChildren()) {
 
-                    Bowler bowler=d.getValue(Bowler.class);
-                    bowler.setName(d.getKey());
-                    Team1Bowlers.add(bowler);
+                        Bowler bowler = d.getValue(Bowler.class);
+                        bowler.setName(d.getKey());
+                        Team1Bowlers.add(bowler);
+                    }
                 }
-
+                catch (Exception e)
+                {}
                 if(Team1Bowlers.size()!=0) {
                     Team1BowlerAdapter = new BowlerRecyclerViewAdapter(Team1Bowlers, Scorecard.this);
                     Team1_Bowling.setAdapter(Team1BowlerAdapter);
@@ -283,13 +303,16 @@ public class Scorecard extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 Team2Bowlers.clear();
-                for(DataSnapshot d :dataSnapshot.getChildren())
-                {
+                try {
+                    for (DataSnapshot d : dataSnapshot.getChildren()) {
 
-                    Bowler bowler=d.getValue(Bowler.class);
-                    bowler.setName(d.getKey());
-                    Team2Bowlers.add(bowler);
+                        Bowler bowler = d.getValue(Bowler.class);
+                        bowler.setName(d.getKey());
+                        Team2Bowlers.add(bowler);
+                    }
                 }
+                catch (Exception e)
+                {}
                 if(Team2Bowlers.size()!=0) {
                     Team2BowlerAdapter = new BowlerRecyclerViewAdapter(Team2Bowlers, Scorecard.this);
                     Team2_Bowling.setAdapter(Team2BowlerAdapter);
