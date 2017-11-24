@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fixtures</title>
+</head>
+<body>
+
+
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDaHOC1wcSBNVe7-6Y2LVJcFQ4vFbTyh0Y",
+        authDomain: "cricket-score-6b858.firebaseapp.com",
+        databaseURL: "https://cricket-score-6b858.firebaseio.com",
+        projectId: "cricket-score-6b858",
+        storageBucket: "cricket-score-6b858.appspot.com",
+        messagingSenderId: "942055966915"
+    };
+    firebase.initializeApp(config);
+</script>
+
+
+    <fieldset style="font-size: 20px ; padding-top: 20px" >
+        <legend style="font-size: 40px">Match Details</legend>
+       <table >
+           <tr><td>
+                 <label>Date: <br/></label>
+                </td>
+               <td>
+                <input type="date" id="date" style="padding: 10px ; font-size: 20px" /><br/>
+                </td>
+           <tr>
+           <td>
+                 <label> Time : <br/></label>
+           </td>
+           <td>
+                  <input type="time" id="time" style="padding: 10px; font-size: 20px"/><br/>
+           </td>
+          </tr>
+           <tr><td>
+        <label> Team 1 : <br/>
+           </td>
+               <td>
+                <select id="Team1" style="padding: 10px; font-size: 20px">
+                <option value="Ferocious Knights">Ferocious Knights</option>
+                <option value="Galacticos">Galacticos</option>
+                <option value="Kaisers Eleven">Kaisers Eleven</option>
+                <option value="Mighty Bisons">Mighty Bisons</option>
+                <option value="Phoenix phantoms">Phoenix phantoms</option>
+                <option value="Royal Warriors">Royal Warriors</option>
+
+                </select>
+               </td>
+
+
+    <br/>
+           <tr><td>
+        <label> Team 2 : <br/>
+       </td>
+           <td>
+            <select id="Team2" style="padding: 10px; font-size: 20px">
+                <option value="Ferocious Knights">Ferocious Knights</option>
+                <option value="Galacticos">Galacticos</option>
+                <option value="Kaisers Eleven">Kaisers Eleven</option>
+                <option value="Mighty Bisons">Mighty Bisons</option>
+                <option value="Phoenix phantoms">Phoenix phantoms</option>
+                <option value="Royal Warriors">Royal Warriors</option>
+
+            </select>
+           </td>
+           <td>
+           <tr>
+            <td>
+                Match No :
+            </td>
+           <td>
+                <input type="number" id="matchNo" style="padding: 10px; font-size: 20px" />
+           </td>
+
+            </tr>
+        <tr>
+            <td>
+                <button id="submit" onclick="updateDetails()"> Submit </button>
+            </td>
+        </tr>
+
+       </table>
+    </fieldset>
+
+
+<script src="Match.js"></script>
+
+</body>
+</html>
