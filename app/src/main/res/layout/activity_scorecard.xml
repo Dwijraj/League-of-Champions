@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="50"
                     android:textColor="#000000"
-                    android:gravity="center"
+                    android:gravity="center|top"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
@@ -314,9 +314,9 @@
                 <TextView
                     android:id="@+id/Team2_Name_Scorecard"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="50"
-                    android:gravity="center"
+                    android:gravity="center|top"
                     android:textColor="#000000"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -587,9 +587,10 @@
                 android:id="@+id/ManOfTheMatch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="start"
+                android:minHeight="24dp"
                 android:textColor="#ffb301"
-                android:textSize="23sp" />
+                android:textSize="17sp" />
 
 
         </LinearLayout>

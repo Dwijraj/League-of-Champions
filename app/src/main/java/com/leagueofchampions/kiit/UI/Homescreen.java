@@ -96,8 +96,12 @@ public class Homescreen extends AppCompatActivity {
 
         GLOBAL_ACTIVITY=this;
 
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        try {
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
+        }
+        catch (Exception e)
+        {}
         Title=(ShimmerTextView) findViewById(R.id.Title);
         tabLayout=(TabLayout) findViewById(R.id.Tab_layout);
         SET_AS_WALLPAPER=(ImageView) findViewById(R.id.set_as_wallpaper);

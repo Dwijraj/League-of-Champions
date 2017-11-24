@@ -12,7 +12,7 @@ public class Batsman {
     private String Four;
     private String Six;
     private String StrikeRate;
-
+    private int    Number;
     public String getName() {
         return Name;
     }
@@ -64,12 +64,21 @@ public class Batsman {
     public Batsman() {
     }
 
-    public Batsman(String name, String runs, String balls, String four, String six, String strikeRate) {
+    public int getNumber() {
+        return Number;
+    }
+
+    public void setNumber(int number) {
+        Number = number;
+    }
+
+    public Batsman(String name, String runs, String balls, String four, String six, String strikeRate, int Position) {
         Name = name;
         Runs = runs;
         Balls = balls;
         Four = four;
         Six = six;
         StrikeRate = strikeRate;
+        this.Number=Position;
     }
 }

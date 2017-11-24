@@ -1,5 +1,6 @@
 package com.leagueofchampions.kiit.UI;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,6 +42,7 @@ public class Details_activity extends AppCompatActivity {
     private TextView Batsman2_Name,Batsman2_Runs,Batsman2_Balls,Batsman2_4,Batsman2_6,Batsman2_StrikeRate;
     private TextView Bowler_Name,Bowler_Runs,Bowler_Maiden,Bowler_Over,Bowler_wickets,Bowler_Economy;
     private ProgressBar Team1_On_Pitch_Progress_Bar,Team2_On_Pitch_Progress_Bar,Batting_Team_ProgressBar,Bowling_Team_ProgressBar;
+    private TextView FullScorecard;
     private TextView Score,MatchN;
     private DatabaseReference MatchNo,BattingTeam,BowlingTeam;
     private DatabaseReference Batsman1,Batsman2,Bowler,ScoreRef;
@@ -56,6 +58,7 @@ public class Details_activity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_details_activity);
 
+        FullScorecard=(TextView) findViewById(R.id.FullScorecard);
         tabLayout=(TabLayout) findViewById(R.id.Tab_layout_details);
         BattingTeam=FirebaseDatabase.getInstance().getReference().child("Live").child("BattingTeam");
         BowlingTeam=FirebaseDatabase.getInstance().getReference().child("Live").child("BowlingTeam");
@@ -154,10 +157,18 @@ public class Details_activity extends AppCompatActivity {
 
         MatchNo.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(final DataSnapshot dataSnapshot) {
 
                 MatchN.setText("Match number : "+dataSnapshot.getValue(String.class));
 
+                FullScorecard.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        startActivity(new Intent(Details_activity.this, Scorecard.class).putExtra("MatchNo",dataSnapshot.getValue(String.class)));
+
+                    }
+                });
             }
 
             @Override
@@ -298,6 +309,8 @@ public class Details_activity extends AppCompatActivity {
 
             }
         });
+
+
 
     }
 }

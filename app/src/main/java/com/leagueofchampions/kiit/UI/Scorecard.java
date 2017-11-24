@@ -24,10 +24,12 @@ import com.leagueofchampions.kiit.Model.Batsman;
 import com.leagueofchampions.kiit.Model.Bowler;
 import com.leagueofchampions.kiit.Model.Score;
 import com.leagueofchampions.kiit.R;
+import com.leagueofchampions.kiit.Utils.BatsmanSorting;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Scorecard extends AppCompatActivity {
 
@@ -224,12 +226,14 @@ public class Scorecard extends AppCompatActivity {
                         Team1Batsmen.add(batsman);
                     }
 
+                    Collections.sort(Team1Batsmen,new BatsmanSorting());
                 }
                 catch (Exception e)
                 {
 
                 }
                 if(Team1Batsmen.size()!=0) {
+
                     Team1BattingAdapter = new BatsmanRecyclerViewAdapter(Team1Batsmen, Scorecard.this);
                     Team1_Batting.setAdapter(Team1BattingAdapter);
                 }
@@ -254,6 +258,7 @@ public class Scorecard extends AppCompatActivity {
                         Batsman batsman = d.getValue(Batsman.class);
                         Team2Batsmen.add(batsman);
                     }
+                    Collections.sort(Team2Batsmen,new BatsmanSorting());
                 }
                 catch (Exception e)
                 {
@@ -261,6 +266,8 @@ public class Scorecard extends AppCompatActivity {
                 }
 
                 if(Team2Batsmen.size()!=0) {
+
+
                     Team2BattingAdapter = new BatsmanRecyclerViewAdapter(Team2Batsmen, Scorecard.this);
                     Team2_Batting.setAdapter(Team2BattingAdapter);
                 }
