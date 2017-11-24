@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>:: Who Won :: </title>
+</head>
+<body>
+
+
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDaHOC1wcSBNVe7-6Y2LVJcFQ4vFbTyh0Y",
+        authDomain: "cricket-score-6b858.firebaseapp.com",
+        databaseURL: "https://cricket-score-6b858.firebaseio.com",
+        projectId: "cricket-score-6b858",
+        storageBucket: "cricket-score-6b858.appspot.com",
+        messagingSenderId: "942055966915"
+    };
+    firebase.initializeApp(config);
+</script>
+<fieldset style="font-size: 20px ; padding-top: 20px" >
+    <legend style="font-size: 40px">Final Result :)</legend>
+<table>
+    <tr><td>
+            <h3>Match No :</h3>
+        </td>
+        <td>
+            <input type="number" id="matchNo" style="padding: 10px; font-size: 20px" />
+        </td>
+    </tr>
+ <tr>
+     <td>
+        <h3> Result :</h3>
+     </td>
+     <td>
+        <input type="text" id="result"  style="padding: 10px; font-size: 20px" />
+     </td>
+     <td>Like: "India Won The Match By 10 Runs"</td>
+ </tr>
+    <tr>
+        <td>
+            <h3> Man Of The Match :</h3>
+        </td>
+        <td>
+            <input type="text" id="Manofmatch"  style="padding: 10px; font-size: 20px" />
+        </td>
+
+    </tr>
+    <tr>
+        <td>
+            <button id="submit" onclick="updateWinner()" > Submit </button>
+        </td>
+        <td>
+            <div id="NextButton"></div>
+        </td>
+    </tr>
+
+
+</table>
+</fieldset>
+
+<script>
+
+
+    function updateWinner() {
+
+        window.alert("Inside");
+        var matchNo = document.getElementById("matchNo");
+        var MatchNo = matchNo.value;
+
+        var manofmatch = document.getElementById("Manofmatch");
+        var ManOfMatch = manofmatch.value;
+
+      //  window.alert("Inside444");
+        var result = document.getElementById("result");
+        var Result = result.value;
+
+        var fbrf = firebase.database().ref();
+
+        fbrf.child("Scorecard").child(MatchNo).update({
+            ManOfTheMatch: ManOfMatch});
+
+        fbrf.child("PlayedFixtures").child(MatchNo).child("Result").set(Result+"(Click To get More Info)", function (error) {
+            if (error) {
+                window.alert("Data could not be saved." + error);
+            } else {
+                window.alert("Data Inserted");
+                document.getElementById("NextButton").innerHTML = '<button id="submit" onclick="GoNextPage()" >Go Next</button>';
+            }
+        });
+    }
+    function GoNextPage()
+    {
+        document.location.href="Result1.html";
+
+    }
+
+
+/*
+
+        while(hello(MatchNo , Result)) {
+
+
+        }
+
+        }
+
+        function hello(MatchNo , Result) {
+            var firebaseRef = firebase.database().ref().child("PlayedFixtures").child(MatchNo).child(Result);
+
+            firebaseRef.on("value",function(Name) {
+
+                heading.innerText = Name.val();
+            });
+        }
+
+
+
+    */
+</script>
+
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>:: Scoring ::</title>
+
+
+    <style>
+        #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 0px solid #ddd;
+            padding: 5px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 8px;
+            padding-bottom: 8px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+        input{
+            padding: 8px;
+            font-size: 20px;
+            width: 80px;
+
+        }
+        button{
+            padding: 8px;
+            font-size: 13px;
+            width: 60px;
+
+
+        }
+
+    </style>
+
+    <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDaHOC1wcSBNVe7-6Y2LVJcFQ4vFbTyh0Y",
+            authDomain: "cricket-score-6b858.firebaseapp.com",
+            databaseURL: "https://cricket-score-6b858.firebaseio.com",
+            projectId: "cricket-score-6b858",
+            storageBucket: "cricket-score-6b858.appspot.com",
+            messagingSenderId: "942055966915"
+        };
+        firebase.initializeApp(config);
+    </script>
+</head>
+<body>
+    <fieldset style="font-size: 20px ; padding-top: 2px" >
+        <legend style="font-size: 20px">Match Between </legend>
+        <table id="customers">
+            <tr><td style="padding: 10px; font-size: 20px">
+                <label>Match No :</label>
+            </td>
+            <td id="matchNo">
+                <input type="number" id="MatchNo" style="padding: 10px; font-size: 20px">
+            </td>
+            <td>
+                <label>Team 1 :</label>
+            </td>
+
+                <td id="team1">
+                    <select id="Team1" style="padding: 10px; font-size: 20px">
+                        <option value="Ferocious Knights">Ferocious Knights</option>
+                        <option value="Galacticos">Galacticos</option>
+                        <option value="Kaisers Eleven">Kaisers Eleven</option>
+                        <option value="Mighty Bisons">Mighty Bisons</option>
+                        <option value="Phoenix phantoms">Phoenix phantoms</option>
+                        <option value="Royal Warriors">Royal Warriors</option>
+
+                    </select>
+
+                </td>
+                <td>
+                    <label>Team 2 :</label>
+                </td>
+
+                <td id="team2">
+                    <select id="Team2" style="padding: 10px; font-size: 20px">
+                        <option value="Ferocious Knights">Ferocious Knights</option>
+                        <option value="Galacticos">Galacticos</option>
+                        <option value="Kaisers Eleven">Kaisers Eleven</option>
+                        <option value="Mighty Bisons">Mighty Bisons</option>
+                        <option value="Phoenix phantoms">Phoenix phantoms</option>
+                        <option value="Royal Warriors">Royal Warriors</option>
+
+                    </select>
+
+                </td>
+                <td id="TeamSubmit" >
+                    <button onclick="SelectTeam()"> Submit </button>
+                </td>
+                </tr>
+
+        </table>
+    </fieldset>
+    <fieldset style="font-size: 20px ; padding-top: 2px" >
+        <legend style="font-size: 20px">Batting Team </legend>
+        <table id="customers" >
+            <tr>
+                <td>
+                    Batting Team
+                </td>
+                <td id="Batting">
+                    <select id="batting" style="padding: 10px; font-size: 20px">
+
+                    </select>
+                </td>
+                <td  id="BattingSubmit" >
+                    <button onclick="BattingTeam()"> Submit </button>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <fieldset style="font-size: 20px ; padding-top: 2px" >
+        <legend style="font-size: 20px">Batsman Stats </legend>
+        <table id="customers" >
+            <tr>
+                <th>
+                </th>
+                <th> Name:</th>
+                <th>Runs </th>
+                <th>Balls</th>
+                <th>Four</th>
+                <th>Six</th>
+
+                <th  id="Batsmansubmit" >
+                <button onclick="updatebat()"> Submit </button>
+            </th>
+            </tr>
+            <tr>
+                <td>
+                    Batsman 1
+                </td>
+                <td id="Batsman1">
+                    <select id="bat1" style="padding: 10px; font-size: 20px">
+
+
+                    </select>
+                </td>
+                <td>
+                    <input type="number" id="Runs1">
+                </td>
+                <td>
+                    <input type="number" id="Balls1">
+                </td>
+                <td>
+                    <input type="number" id="Four1">
+                </td>
+                <td>
+                    <input type="number" id="Six1">
+                </td>
+
+
+                <td  id="Batsmansubmit1" >
+                    <button onclick="updatebat1()"> Submit </button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Batsman 2
+                </td>
+                <td id="Batsman2">
+                    <select id="bat2" style="padding: 10px; font-size: 20px">
+
+                    </select>
+                </td>
+                <td>
+                    <input type="number" id="Runs2">
+                </td>
+                <td>
+                    <input type="number" id="Balls2">
+                </td>
+                <td>
+                    <input type="number" id="Four2">
+                </td>
+                <td>
+                    <input type="number" id="Six2">
+                </td>
+
+
+                <td  id="Batsmansubmit2" >
+                    <button onclick="updatebat2()"> Submit </button>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <fieldset style="font-size: 20px ; padding-top: 2px" >
+        <legend style="font-size: 20px">Bowler Stats</legend>
+        <table id="customers" >
+            <tr>
+                <th>
+                </th>
+                <th> Name</th>
+                <th>Runs</th>
+                <th>Overs</th>
+                <th>Wickets</th>
+                <th>Maidens</th>
+
+                <th> ==== </th>
+            </tr>
+            <tr>
+                <td>
+                    Bowler :
+                </td>
+                <td id="Bowler">
+                    <select id="bowl" style="padding: 10px; font-size: 20px">
+
+
+                    </select>
+                </td>
+                <td>
+                    <input type="number" id="Runs">
+                </td>
+                <td>
+                    <input type="number" id="Over" step="0.1">
+                </td>
+                <td>
+                    <input type="number" id="Wickets">
+                </td>
+                <td>
+                    <input type="number" id="Maidens">
+                </td>
+
+
+                <td  id="Bowlersubmit" >
+                    <button onclick="updatebowl()"> Submit </button>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <fieldset style="font-size: 20px ; padding-top: 2px" >
+        <legend style="font-size: 20px">Live Score</legend>
+        <table id="customers" >
+            <tr>
+                <th>
+                </th>
+                <th>Runs</th>
+                <th>Overs</th>
+                <th>Wickets</th>
+                <th>Extras</th>
+                <th>====</th>
+            </tr>
+            <tr>
+                <td>
+                    Score :
+                </td>
+                <td>
+                    <input type="number" id="TeamRuns">
+                </td>
+                <td>
+                    <input type="number" id="TeamOver" step="0.1">
+                </td>
+                <td>
+                    <input type="number" id="TeamWickets">
+                </td>
+                <td>
+                    <input type="number" id="TeamExtras">
+                </td>
+
+                <td >
+                    <button onclick="LiveScore()"> Submit </button>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+<script src="score.js"></script>
+</body>
+</html>
