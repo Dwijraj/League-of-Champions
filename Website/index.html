@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>League Of Champions</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</head>
+<body>
+
+<!-- Textfield with Floating Label -->
+
+<h2> Login First </h2>
+<div id="message" style="color:red; size: 20px"></div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="username">
+        <label class="mdl-textfield__label" for="username">Username...</label>
+    </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="password" id="Password">
+        <label class="mdl-textfield__label" for="Password">Password...</label>
+    </div>
+
+<br>
+<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="Login()">
+    Login :)
+</button>
+<script>
+
+
+    function Login() {
+
+        var user = document.getElementById("username");
+        var username= user.value;
+        var pass = document.getElementById("Password");
+        var password = pass.value;
+
+       // window.alert(username + "  and  " + password);
+        if(username=="loc2k17" && password=="navneetdwijraj")
+        {
+            document.location.href="home.html";
+           // window.alert(username + "  if  " + password);
+        }
+        else
+        {
+            var message = document.getElementById("message");
+            message.innerHTML="UserName And Password may be incorrect";
+
+         //   window.alert(username + "  else  " + password);
+        }
+
+    }
+</script>
+
+
+</body>
+</html>

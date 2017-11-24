@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>:: Update Final Score ::</title>
+</head>
+<body>
+
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDaHOC1wcSBNVe7-6Y2LVJcFQ4vFbTyh0Y",
+        authDomain: "cricket-score-6b858.firebaseapp.com",
+        databaseURL: "https://cricket-score-6b858.firebaseio.com",
+        projectId: "cricket-score-6b858",
+        storageBucket: "cricket-score-6b858.appspot.com",
+        messagingSenderId: "942055966915"
+    };
+    firebase.initializeApp(config);
+</script>
+
+<fieldset style="font-size: 20px ; padding-top: 20px" >
+    <legend style="font-size: 40px">Team Details Update </legend>
+    <table >
+        <tr><td>
+            <label>Name :<br/></label>
+
+        </td>
+            <td>
+
+                <select id="Name" style="padding: 10px; font-size: 20px">
+                    <option value="Ferocious Knights">Ferocious Knights</option>
+                    <option value="Galacticos">Galacticos</option>
+                    <option value="Kaisers Eleven">Kaisers Eleven</option>
+                    <option value="Mighty Bisons">Mighty Bisons</option>
+                    <option value="Phoenix phantoms">Phoenix phantoms</option>
+                    <option value="Royal Warriors">Royal Warriors</option>
+
+                </select>
+
+            </td>
+        <tr>
+            <td>
+                <label>Matches :<br/></label>
+            </td>
+            <td>
+                <input type="number" id="Matches" style="padding: 10px; font-size: 20px"/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Loss :<br/></label>
+            </td>
+            <td>
+                <input type="number" id="Loss" style="padding: 10px; font-size: 20px"/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Draw :<br/></label>
+            </td>
+            <td>
+                <input type="number" id="Draw" style="padding: 10px; font-size: 20px"/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Wins :<br/></label>
+            </td>
+            <td>
+                <input type="number" id="Wins" style="padding: 10px; font-size: 20px"/><br/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label>Points :<br/></label>
+            </td>
+            <td>
+                <input type="number" id="Points" style="padding: 10px; font-size: 20px"/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>NRR :<br/></label>
+            </td>
+            <td>
+                <input type="number" id="NRR" style="padding: 10px; font-size: 20px"/><br/>
+            </td>
+        </tr>
+
+        <tr><td></td>
+            <td>
+                <button id="submit" onclick="updateDetails()"> Update :) </button>
+            </td>
+        </tr>
+  <script src="result.js"></script>
+</body>
+</html>
