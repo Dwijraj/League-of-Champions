@@ -4,9 +4,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +45,7 @@ public class Scorecard extends AppCompatActivity {
     private DatabaseReference Team1ScoreRef,Team2ScoreRef;
     private DatabaseReference ManofTheMatchRef;
     private DatabaseReference Team1BattingRef,Team2BattingRef,Team1BowlingRef,Team2BowlingRef;
+    private ProgressBar Team1ImageProgressBar,Team2ImageProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +104,10 @@ public class Scorecard extends AppCompatActivity {
         Team2_Bowling=(RecyclerView) findViewById(R.id.Team2_Bowling_Scorecard);
         Team2_Bowling.setLayoutManager(new LinearLayoutManager(this));
 
+
+        Team1ImageProgressBar=(ProgressBar) findViewById(R.id.Team1_Image_ProgressBar);
+        Team2ImageProgressBar=(ProgressBar) findViewById(R.id.Team2_Image_ProgressBar);
+
         Team1Batsmen=new ArrayList<>();
         Team2Batsmen=new ArrayList<>();
         Team1Bowlers=new ArrayList<>();
@@ -112,6 +119,7 @@ public class Scorecard extends AppCompatActivity {
 
                 Team1_Name.setText(dataSnapshot.getValue(String.class));
                 Team1_Icon.setImageResource(Constants.NAMES_FLAGS.get(dataSnapshot.getValue(String.class)));
+                Team1ImageProgressBar.setVisibility(View.INVISIBLE);
             }
 
             @Override
@@ -125,6 +133,7 @@ public class Scorecard extends AppCompatActivity {
 
                 Team2_Name.setText(dataSnapshot.getValue(String.class));
                 Team2_Icon.setImageResource(Constants.NAMES_FLAGS.get(dataSnapshot.getValue(String.class)));
+                Team2ImageProgressBar.setVisibility(View.INVISIBLE);
             }
 
             @Override

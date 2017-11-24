@@ -156,12 +156,13 @@
                                 android:layout_height="wrap_content">
 
                                 <TableRow
+                                    android:background="#04cc1f"
                                     android:weightSum="100"
                                     >
 
                                     <TextView
                                         android:gravity="center"
-                                        android:textColor="#000"
+                                        android:textColor="#fff"
                                         android:textStyle="bold"
                                         android:layout_weight="10"
                                         android:text="Batsman"
@@ -169,7 +170,7 @@
 
                                     <TextView
 
-                                        android:textColor="#000"
+                                        android:textColor="#fff"
                                         android:textStyle="bold"
                                         android:gravity="center"
                                         android:layout_weight="20"
@@ -177,7 +178,7 @@
                                         />
                                     <TextView
 
-                                        android:textColor="#000"
+                                        android:textColor="#fff"
                                         android:textStyle="bold"
                                         android:gravity="center"
                                         android:layout_weight="20"
@@ -187,7 +188,7 @@
 
                                     <TextView
 
-                                        android:textColor="#000"
+                                        android:textColor="#fff"
                                         android:textStyle="bold"
                                         android:gravity="center"
                                         android:layout_weight="15"
@@ -195,7 +196,7 @@
                                         />
                                     <TextView
 
-                                        android:textColor="#000"
+                                        android:textColor="#fff"
                                         android:textStyle="bold"
                                         android:gravity="center"
                                         android:layout_weight="15"
@@ -204,7 +205,7 @@
 
                                     <TextView
 
-                                        android:textColor="#000"
+                                        android:textColor="#fff"
                                         android:textStyle="bold"
                                         android:gravity="center"
                                         android:layout_weight="20"
@@ -275,6 +276,7 @@
 
                                 </TableRow>
                                 <TableRow
+                                    android:background="#706363"
                                     android:weightSum="100"
                                     >
 
@@ -358,12 +360,13 @@
                                 android:layout_height="wrap_content">
 
                                 <TableRow
+                                    android:background="#04cc1f"
                                     android:weightSum="100"
                                     >
 
                                     <TextView
 
-                                        android:textColor="#000"
+                                        android:textColor="#fff"
                                         android:textStyle="bold"
                                         android:gravity="center"
                                         android:layout_weight="10"
@@ -372,7 +375,7 @@
 
                                     <TextView
 
-                                        android:textColor="#000"
+                                        android:textColor="#fff"
                                         android:textStyle="bold"
                                         android:gravity="center"
                                         android:layout_weight="20"
@@ -380,7 +383,7 @@
                                         />
                                     <TextView
 
-                                        android:textColor="#000"
+                                        android:textColor="#fff"
                                         android:textStyle="bold"
                                         android:gravity="center"
                                         android:layout_weight="20"
@@ -390,7 +393,7 @@
 
                                     <TextView
 
-                                        android:textColor="#000"
+                                        android:textColor="#fff"
                                         android:textStyle="bold"
                                         android:gravity="center"
                                         android:layout_weight="15"
@@ -398,7 +401,7 @@
                                         />
                                     <TextView
 
-                                        android:textColor="#000"
+                                        android:textColor="#fff"
                                         android:textStyle="bold"
                                         android:gravity="center"
                                         android:layout_weight="15"
@@ -407,7 +410,7 @@
 
                                     <TextView
 
-                                        android:textColor="#000"
+                                        android:textColor="#fff"
                                         android:textStyle="bold"
                                         android:gravity="center"
                                         android:layout_weight="20"

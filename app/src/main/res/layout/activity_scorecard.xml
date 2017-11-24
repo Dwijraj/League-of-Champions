@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="#000"
+                android:textColor="#000000"
                 android:text="Scorecard"
                 android:textSize="23sp" />
 
@@ -37,15 +37,26 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="50"
-                    android:textColor="#000"
+                    android:textColor="#000000"
                     android:gravity="center"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/Team1_Image_Scorecard"
+                <FrameLayout
                     android:layout_width="50dp"
-                    android:layout_height="50dp" />
+                    android:layout_height="50dp">
+
+                    <ImageView
+                        android:id="@+id/Team1_Image_Scorecard"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp" />
+                    <ProgressBar
+                        android:layout_width="50dp"
+                        android:id="@+id/Team1_Image_ProgressBar"
+                        android:layout_height="50dp" />
+
+                </FrameLayout>
+
 
 
             </LinearLayout>
@@ -61,11 +72,12 @@
                     android:paddingLeft="30dp"
                     android:text="Batting"
 
-                    android:textColor="#000"
+                    android:textColor="#000000"
                     android:textSize="23sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
+                    android:background="#04cc1f"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -77,7 +89,7 @@
                         android:layout_weight="50"
                         android:gravity="center"
                         android:text="Batsman"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
                     <TextView
@@ -86,7 +98,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="R"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
                     <TextView
@@ -95,7 +107,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="B"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
 
@@ -105,7 +117,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="4"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
                     <TextView
@@ -114,7 +126,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="6"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
                     <TextView
@@ -123,7 +135,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="SR"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
 
@@ -149,7 +161,7 @@
 
                 <TextView
 
-                    android:textColor="#000"
+                    android:textColor="#000000"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="50"
@@ -159,7 +171,7 @@
                     android:textSize="17sp" />
 
                 <TextView
-                    android:textColor="#000"
+                    android:textColor="#000000"
                     android:id="@+id/Team1_Total_Score"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -176,7 +188,7 @@
 
                 <TextView
 
-                    android:textColor="#000"
+                    android:textColor="#000000"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="50"
@@ -187,7 +199,7 @@
 
                 <TextView
 
-                    android:textColor="#000"
+                    android:textColor="#000000"
                     android:id="@+id/Team1_Total_Extras_Earned"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -207,13 +219,14 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="30dp"
                     android:text="Bowling"
-                    android:textColor="#000"
+                    android:textColor="#000000"
                     android:textSize="23sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#04cc1f"
                     android:orientation="horizontal"
                     android:weightSum="100">
 
@@ -224,7 +237,7 @@
                         android:layout_weight="50"
                         android:gravity="center"
                         android:text="Bowler"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
                     <TextView
@@ -233,7 +246,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="O"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
                     <TextView
@@ -243,7 +256,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="M"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
 
@@ -254,7 +267,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="R"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
                     <TextView
@@ -264,7 +277,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="W"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
                     <TextView
@@ -274,7 +287,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="Ec"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
 
@@ -304,14 +317,24 @@
                     android:layout_height="match_parent"
                     android:layout_weight="50"
                     android:gravity="center"
-                    android:textColor="#000"
+                    android:textColor="#000000"
                     android:textSize="22sp"
                     android:textStyle="bold" />
+
+                <FrameLayout
+                android:layout_width="50dp"
+                android:layout_height="50dp">
 
                 <ImageView
                     android:id="@+id/Team2_Image_Scorecard"
                     android:layout_width="50dp"
                     android:layout_height="50dp" />
+                <ProgressBar
+                    android:layout_width="50dp"
+                    android:id="@+id/Team2_Image_ProgressBar"
+                    android:layout_height="50dp" />
+
+            </FrameLayout>
 
 
             </LinearLayout>
@@ -326,7 +349,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="30dp"
                     android:text="Batting"
-                    android:textColor="#000"
+                    android:textColor="#000000"
                     android:textSize="23sp"
                     android:textStyle="bold" />
 
@@ -334,6 +357,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:background="#04cc1f"
                     android:weightSum="100">
 
                     <TextView
@@ -342,7 +366,7 @@
                         android:layout_weight="50"
                         android:gravity="center"
                         android:text="Batsman"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
                     <TextView
@@ -351,7 +375,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="R"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
                     <TextView
@@ -360,7 +384,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="B"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
 
@@ -370,7 +394,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="4"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
                     <TextView
@@ -379,7 +403,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="6"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
                     <TextView
@@ -388,7 +412,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="SR"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
 
@@ -398,12 +422,66 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/Team2_Batting_Scorecard"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                   >
+                    android:layout_height="wrap_content">
 
                 </android.support.v7.widget.RecyclerView>
 
 
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="50"
+                    android:gravity="end"
+                    android:paddingRight="20dp"
+
+                    android:textColor="#000000"
+                    android:text="Total :"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/Team2_Total_Score"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="50"
+                    android:paddingRight="20dp"
+
+                    android:textColor="#000000"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="50"
+                    android:gravity="end"
+
+                    android:textColor="#000000"
+                    android:paddingRight="20dp"
+                    android:text="Extras :"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/Team2_Total_Extras_Earned"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="50"
+                    android:paddingRight="20dp"
+
+                    android:textColor="#000000"
+                    android:textSize="17sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -417,11 +495,12 @@
                     android:paddingLeft="30dp"
                     android:text="Bowling"
 
-                    android:textColor="#000"
+                    android:textColor="#0d0606"
                     android:textSize="23sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
+                    android:background="#04cc1f"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -434,7 +513,7 @@
                         android:layout_weight="50"
                         android:gravity="center"
                         android:text="Bowler"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
                     <TextView
@@ -443,7 +522,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="O"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
                     <TextView
@@ -453,7 +532,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="Maid"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
 
@@ -464,7 +543,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="R"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
                     <TextView
@@ -474,7 +553,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="W"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
                     <TextView
@@ -484,7 +563,7 @@
                         android:layout_weight="10"
                         android:gravity="center"
                         android:text="Econ"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold" />
 
 
@@ -502,61 +581,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="100">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="50"
-                    android:gravity="end"
-                    android:paddingRight="20dp"
-
-                    android:textColor="#000"
-                    android:text="Total :"
-                    android:textSize="17sp" />
-
-                <TextView
-                    android:id="@+id/Team2_Total_Score"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="50"
-                    android:paddingRight="20dp"
-
-                    android:textColor="#000"
-                    android:textSize="17sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="100">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="50"
-                    android:gravity="end"
-
-                    android:textColor="#000"
-                    android:paddingRight="20dp"
-                    android:text="Extras :"
-                    android:textSize="17sp" />
-
-                <TextView
-                    android:id="@+id/Team2_Total_Extras_Earned"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="50"
-                    android:paddingRight="20dp"
-
-                    android:textColor="#000"
-                    android:textSize="17sp" />
-            </LinearLayout>
 
             <com.romainpiel.shimmer.ShimmerTextView
                 android:id="@+id/ManOfTheMatch"

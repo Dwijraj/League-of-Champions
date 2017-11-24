@@ -279,7 +279,7 @@ public class Details_activity extends AppCompatActivity {
 
                 try {
                     com.leagueofchampions.kiit.Model.Score score = dataSnapshot.getValue(com.leagueofchampions.kiit.Model.Score.class);
-                    Score.setText(score.getRuns() + "/" + score.getWickets() + "(" + score.getOvers() + ")"+" Extras "+score.getExtras());
+                    Score.setText(score.getRuns() + "/" + score.getWickets() + "(" + score.getOvers() + ")");
                 }
                 catch (Exception e)
                 {

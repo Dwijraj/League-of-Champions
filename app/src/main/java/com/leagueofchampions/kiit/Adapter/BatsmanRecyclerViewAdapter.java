@@ -1,12 +1,14 @@
 package com.leagueofchampions.kiit.Adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.leagueofchampions.kiit.Constants.Constants;
@@ -47,6 +49,11 @@ public class BatsmanRecyclerViewAdapter extends RecyclerView.Adapter<BatsmanRecy
 
         Batsman batsman=ListData.get(position);
 
+        if(position%2==0)
+        {
+            holder.Root_Layout.setBackgroundColor(Color.parseColor("#9c9595"));
+        }
+
         holder.Batsman.setText(batsman.getName());
         holder.StrikeRate.setText(batsman.getStrikeRate());
         holder.Balls.setText(batsman.getBalls());
@@ -71,10 +78,12 @@ public class BatsmanRecyclerViewAdapter extends RecyclerView.Adapter<BatsmanRecy
         private TextView Four;
         private TextView Six;
         private TextView StrikeRate;
+        private LinearLayout Root_Layout;
 
         public Holder(View itemView) {
             super(itemView);
 
+           Root_Layout=(LinearLayout) itemView.findViewById(R.id.Batting_Root);
            Batsman=(TextView) itemView.findViewById(R.id.Batsman);
            Runs=(TextView) itemView.findViewById(R.id.Runs);
            Balls=(TextView) itemView.findViewById(R.id.Balls);

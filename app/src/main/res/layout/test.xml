@@ -439,7 +439,6 @@
                     <TextView
 
                         android:textSize="32sp"
-                        android:textColor="#000"
                         android:elevation="30dp"
                         android:layout_width="match_parent"
                         android:layout_weight="40"

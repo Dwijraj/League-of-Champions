@@ -1,12 +1,14 @@
 package com.leagueofchampions.kiit.Adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.leagueofchampions.kiit.Constants.Constants;
@@ -46,6 +48,11 @@ public class BowlerRecyclerViewAdapter extends RecyclerView.Adapter<BowlerRecycl
 
         Bowler bowler=ListData.get(position);
 
+        if(position%2==0)
+        {
+            holder.Bowling_Root.setBackgroundColor(Color.parseColor("#9c9595"));
+        }
+
         holder.Econ.setText(bowler.getEconomy());
         holder.Wickets.setText(bowler.getWickets());
         holder.Over.setText(bowler.getOvers());
@@ -69,10 +76,12 @@ public class BowlerRecyclerViewAdapter extends RecyclerView.Adapter<BowlerRecycl
         private TextView Wickets;
         private TextView Runs;
         private TextView Econ;
+        private LinearLayout Bowling_Root;
 
         public Holder(View itemView) {
             super(itemView);
 
+            Bowling_Root=(LinearLayout) itemView.findViewById(R.id.Bowling_Root);
             Bowler=(TextView) itemView.findViewById(R.id.Bowler);
             Over=(TextView) itemView.findViewById(R.id.Over);
             Maiden=(TextView) itemView.findViewById(R.id.Maiden);
