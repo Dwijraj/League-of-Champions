@@ -229,7 +229,7 @@ public class Details_activity extends AppCompatActivity {
                 }
                 catch (Exception e)
                 {
-                    Toast.makeText(Details_activity.this,"No data to display",Toast.LENGTH_SHORT).show();
+                 //   Toast.makeText(Details_activity.this,"No Batsman1 data to display",Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -255,7 +255,7 @@ public class Details_activity extends AppCompatActivity {
                 }
                 catch (Exception e)
                 {
-                    Toast.makeText(Details_activity.this,"No data to display",Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(Details_activity.this,"No Batsman2 data to display",Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -280,7 +280,7 @@ public class Details_activity extends AppCompatActivity {
                 }
                 catch (Exception e)
                 {
-                    Toast.makeText(Details_activity.this,"No data to display",Toast.LENGTH_SHORT).show();
+               //     Toast.makeText(Details_activity.this,"No Bowler data to display",Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -300,7 +300,7 @@ public class Details_activity extends AppCompatActivity {
                 }
                 catch (Exception e)
                 {
-                    Toast.makeText(Details_activity.this,"No data to display ",Toast.LENGTH_SHORT).show();
+                //    Toast.makeText(Details_activity.this,"No score  to display ",Toast.LENGTH_SHORT).show();
                 }
             }
 

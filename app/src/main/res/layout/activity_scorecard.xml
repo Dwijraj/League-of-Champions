@@ -63,7 +63,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
@@ -211,7 +211,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
@@ -305,6 +305,11 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="50dp"/>
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -313,35 +318,36 @@
 
                 <TextView
                     android:id="@+id/Team2_Name_Scorecard"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="50"
-                    android:gravity="center|top"
                     android:textColor="#000000"
+                    android:gravity="center|top"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
                 <FrameLayout
-                android:layout_width="50dp"
-                android:layout_height="50dp">
-
-                <ImageView
-                    android:id="@+id/Team2_Image_Scorecard"
                     android:layout_width="50dp"
-                    android:layout_height="50dp" />
-                <ProgressBar
-                    android:layout_width="50dp"
-                    android:id="@+id/Team2_Image_ProgressBar"
-                    android:layout_height="50dp" />
+                    android:layout_height="50dp">
 
-            </FrameLayout>
+                    <ImageView
+                        android:id="@+id/Team2_Image_Scorecard"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp" />
+                    <ProgressBar
+                        android:layout_width="50dp"
+                        android:id="@+id/Team2_Image_ProgressBar"
+                        android:layout_height="50dp" />
+
+                </FrameLayout>
+
 
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
@@ -486,7 +492,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
@@ -500,9 +506,9 @@
                     android:textStyle="bold" />
 
                 <LinearLayout
-                    android:background="#04cc1f"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#04cc1f"
                     android:orientation="horizontal"
                     android:weightSum="100">
 
@@ -573,14 +579,12 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/Team1_Bowling_Scorecard"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    >
+                    android:layout_height="wrap_content">
 
                 </android.support.v7.widget.RecyclerView>
 
 
             </LinearLayout>
-
 
 
             <com.romainpiel.shimmer.ShimmerTextView
