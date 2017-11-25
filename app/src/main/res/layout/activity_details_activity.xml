@@ -276,7 +276,7 @@
 
                                 </TableRow>
                                 <TableRow
-                                    android:background="#706363"
+                                    android:background="#ddd"
                                     android:weightSum="100"
                                     >
 

@@ -2,6 +2,7 @@ package com.leagueofchampions.kiit.Utils;
 
 import com.leagueofchampions.kiit.Model.Batsman;
 
+import java.math.BigInteger;
 import java.util.Comparator;
 
 /**
@@ -12,7 +13,7 @@ public class BatsmanSorting implements Comparator<Batsman> {
     @Override
     public int compare(Batsman o1, Batsman o2) {
 
-
-        return o1.getNumber()-o2.getNumber();
+        BigInteger a =o1.getNumber().subtract(o2.getNumber());
+        return a.intValue();
     }
 }

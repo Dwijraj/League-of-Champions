@@ -50,7 +50,7 @@ public class BowlerRecyclerViewAdapter extends RecyclerView.Adapter<BowlerRecycl
 
         if(position%2==0)
         {
-            holder.Bowling_Root.setBackgroundColor(Color.parseColor("#9c9595"));
+            holder.Bowling_Root.setBackgroundColor(Color.parseColor("#FFBCBBBB"));
         }
 
         holder.Econ.setText(bowler.getEconomy());

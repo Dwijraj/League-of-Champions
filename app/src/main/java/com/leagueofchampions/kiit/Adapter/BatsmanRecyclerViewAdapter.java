@@ -51,7 +51,7 @@ public class BatsmanRecyclerViewAdapter extends RecyclerView.Adapter<BatsmanRecy
 
         if(position%2==0)
         {
-            holder.Root_Layout.setBackgroundColor(Color.parseColor("#9c9595"));
+            holder.Root_Layout.setBackgroundColor(Color.parseColor("#FFBCBBBB"));
         }
 
         holder.Batsman.setText(batsman.getName());

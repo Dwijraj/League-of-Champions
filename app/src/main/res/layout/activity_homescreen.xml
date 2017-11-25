@@ -203,154 +203,190 @@
             android:weightSum="100"
             android:layout_height="match_parent">
 
-            <android.support.v7.widget.CardView
-                android:layout_margin="7dp"
-                android:visibility="visible"
-                android:elevation="44dp"
-                android:layout_weight="95"
-                app:cardCornerRadius="24dp"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp">
+                android:layout_height="match_parent">
 
                 <LinearLayout
-                    android:weightSum="100"
-                    android:padding="4dp"
-                    android:orientation="horizontal"
-                    android:background="#fff"
                     android:layout_width="match_parent"
+                    android:orientation="vertical"
                     android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:weightSum="100"
-                        android:layout_weight="47.5"
-                        android:layout_width="0dp"
-                        android:orientation="horizontal"
-                        android:layout_height="match_parent">
+                    <android.support.v7.widget.CardView
+                        android:layout_margin="7dp"
+                        android:visibility="visible"
+                        android:elevation="44dp"
+                        android:layout_weight="95"
+                        app:cardCornerRadius="24dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
 
                         <LinearLayout
-                            android:layout_weight="60"
-                            android:orientation="vertical"
-                            android:layout_width="0dp"
-                            android:gravity="center"
+                            android:weightSum="100"
+                            android:padding="4dp"
+                            android:orientation="horizontal"
+                            android:background="#fff"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
-                            <FrameLayout
-                                android:layout_width="100dp"
-                                android:layout_height="100dp">
+                            <LinearLayout
+                                android:weightSum="100"
+                                android:layout_weight="47.5"
+                                android:layout_width="0dp"
+                                android:orientation="horizontal"
+                                android:layout_height="match_parent">
 
-                                <ImageView
-                                    android:id="@+id/Team1_Image"
-                                    android:layout_width="100dp"
-                                    android:layout_height="100dp" />
-                                <ProgressBar
-                                    android:layout_width="100dp"
-                                    android:id="@+id/Team1_Image_Progress"
-                                    android:layout_height="100dp" />
+                                <LinearLayout
+                                    android:layout_weight="60"
+                                    android:orientation="vertical"
+                                    android:layout_width="0dp"
+                                    android:gravity="center"
+                                    android:layout_height="match_parent">
+
+                                    <FrameLayout
+                                        android:layout_width="100dp"
+                                        android:layout_height="100dp">
+
+                                        <ImageView
+                                            android:id="@+id/Team1_Image"
+                                            android:layout_width="100dp"
+                                            android:layout_height="100dp" />
+                                        <ProgressBar
+                                            android:layout_width="100dp"
+                                            android:id="@+id/Team1_Image_Progress"
+                                            android:layout_height="100dp" />
 
 
-                            </FrameLayout>
+                                    </FrameLayout>
 
+                                    <TextView
+                                        android:gravity="center"
+                                        android:layout_width="match_parent"
+                                        android:textColor="#000"
+                                        android:textSize="12sp"
+                                        android:id="@+id/Team1_Name"
+                                        android:layout_height="wrap_content" />
+
+
+                                </LinearLayout>
+                                <TextView
+                                    android:id="@+id/Team1_Score"
+                                    android:textColor="#000"
+                                    android:layout_weight="40"
+                                    android:textSize="11sp"
+                                    android:layout_width="0dp"
+                                    android:gravity="center"
+                                    android:layout_height="match_parent" />
+
+
+                            </LinearLayout>
                             <TextView
                                 android:gravity="center"
-                                android:layout_width="match_parent"
                                 android:textColor="#000"
-                                android:textSize="12sp"
-                                android:id="@+id/Team1_Name"
-                                android:layout_height="wrap_content" />
+                                android:text=" VS "
+                                android:layout_weight="7"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent">
+
+                            </TextView>
+                            <LinearLayout
+                                android:weightSum="100"
+                                android:layout_weight="47.5"
+                                android:layout_width="0dp"
+                                android:orientation="horizontal"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:textSize="11sp"
+                                    android:textColor="#000"
+                                    android:layout_weight="40"
+                                    android:layout_width="0dp"
+                                    android:gravity="center"
+                                    android:id="@+id/Team2_score"
+                                    android:layout_height="match_parent" />
+
+
+
+                                <LinearLayout
+                                    android:layout_weight="60"
+                                    android:orientation="vertical"
+                                    android:layout_width="0dp"
+                                    android:gravity="center"
+                                    android:layout_height="match_parent">
+
+                                    <FrameLayout
+                                        android:layout_width="100dp"
+                                        android:layout_height="100dp">
+
+                                        <ImageView
+                                            android:id="@+id/Team2_Image"
+                                            android:layout_width="100dp"
+                                            android:layout_height="100dp" />
+                                        <ProgressBar
+                                            android:layout_width="100dp"
+                                            android:id="@+id/Team2_Image_Progress"
+                                            android:layout_height="100dp" />
+
+
+                                    </FrameLayout>
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:textColor="#000"
+                                        android:textSize="12sp"
+                                        android:gravity="center"
+                                        android:id="@+id/Team2_Name"
+                                        android:layout_height="wrap_content" />
+
+
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+
 
 
                         </LinearLayout>
-                        <TextView
-                            android:id="@+id/Team1_Score"
-                            android:textColor="#000"
-                            android:layout_weight="40"
-                            android:textSize="11sp"
-                            android:layout_width="0dp"
-                            android:gravity="center"
-                            android:layout_height="match_parent" />
 
 
-                    </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
                     <TextView
                         android:gravity="center"
-                        android:textColor="#000"
-                        android:text=" VS "
-                        android:layout_weight="7"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent">
+                        android:textColor="#1b02ff"
+                        android:id="@+id/View_Details"
+                        android:layout_width="match_parent"
+                        android:text="View Details"
+                        android:layout_height="wrap_content" />
 
-                    </TextView>
-                    <LinearLayout
-                        android:weightSum="100"
-                        android:layout_weight="47.5"
-                        android:layout_width="0dp"
-                        android:orientation="horizontal"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:textSize="11sp"
-                            android:textColor="#000"
-                            android:layout_weight="40"
-                            android:layout_width="0dp"
-                            android:gravity="center"
-                            android:id="@+id/Team2_score"
-                            android:layout_height="match_parent" />
-
-
-
-                        <LinearLayout
-                            android:layout_weight="60"
-                            android:orientation="vertical"
-                            android:layout_width="0dp"
-                            android:gravity="center"
-                            android:layout_height="match_parent">
-
-                            <FrameLayout
-                                android:layout_width="100dp"
-                                android:layout_height="100dp">
-
-                                <ImageView
-                                    android:id="@+id/Team2_Image"
-                                    android:layout_width="100dp"
-                                    android:layout_height="100dp" />
-                                <ProgressBar
-                                    android:layout_width="100dp"
-                                    android:id="@+id/Team2_Image_Progress"
-                                    android:layout_height="100dp" />
-
-
-                            </FrameLayout>
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:textColor="#000"
-                                android:textSize="12sp"
-                                android:gravity="center"
-                                android:id="@+id/Team2_Name"
-                                android:layout_height="wrap_content" />
-
-
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
 
 
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:background="#fff"
+                    android:visibility="invisible"
+                    android:id="@+id/No_Live_Matches"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
 
-            </android.support.v7.widget.CardView>
-            <TextView
-                android:gravity="center"
-                android:textColor="#1b02ff"
-                android:id="@+id/View_Details"
-                android:layout_width="match_parent"
-                android:text="View Details"
-                android:layout_height="wrap_content" />
+                    <com.romainpiel.shimmer.ShimmerTextView
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:textSize="28sp"
+                        android:id="@+id/SHIMMER"
+                        android:textColor="#463939"
+                        android:text="Starts 1st December 2017"
+                        android:layout_height="match_parent" />
 
 
+                </LinearLayout>
+
+
+            </FrameLayout>
 
 
         </LinearLayout>

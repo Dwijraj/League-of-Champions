@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -28,6 +29,7 @@ import com.leagueofchampions.kiit.Utils.BatsmanSorting;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -218,25 +220,24 @@ public class Scorecard extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 //Bugs
-                try {
-                    Team1Batsmen.clear();
-                    for (DataSnapshot d : dataSnapshot.getChildren()) {
+                    try {
+                        Team1Batsmen.clear();
+                        for (DataSnapshot d : dataSnapshot.getChildren()) {
 
-                        Batsman batsman = d.getValue(Batsman.class);
-                        Team1Batsmen.add(batsman);
+                            Batsman batsman = d.getValue(Batsman.class);
+                            batsman.setNumber(new BigInteger(batsman.getPosition().trim()));
+                            Team1Batsmen.add(batsman);
+                        }
+
+                        Collections.sort(Team1Batsmen, new BatsmanSorting());
+                        if (Team1Batsmen.size() != 0) {
+
+                            Team1BattingAdapter = new BatsmanRecyclerViewAdapter(Team1Batsmen, Scorecard.this);
+                            Team1_Batting.setAdapter(Team1BattingAdapter);
+                        }
                     }
-
-                    Collections.sort(Team1Batsmen,new BatsmanSorting());
-                }
-                catch (Exception e)
-                {
-
-                }
-                if(Team1Batsmen.size()!=0) {
-
-                    Team1BattingAdapter = new BatsmanRecyclerViewAdapter(Team1Batsmen, Scorecard.this);
-                    Team1_Batting.setAdapter(Team1BattingAdapter);
-                }
+                    catch (Exception e)
+                    {}
 
 
             }
@@ -252,19 +253,19 @@ public class Scorecard extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 Team2Batsmen.clear();
+
                 try {
                     for (DataSnapshot d : dataSnapshot.getChildren()) {
 
                         Batsman batsman = d.getValue(Batsman.class);
+                        batsman.setNumber(new BigInteger(batsman.getPosition().trim()));
                         Team2Batsmen.add(batsman);
                     }
-                    Collections.sort(Team2Batsmen,new BatsmanSorting());
+                    Collections.sort(Team2Batsmen, new BatsmanSorting());
+
                 }
                 catch (Exception e)
-                {
-
-                }
-
+                {}
                 if(Team2Batsmen.size()!=0) {
 
 

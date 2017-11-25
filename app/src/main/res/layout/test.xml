@@ -443,6 +443,7 @@
                         android:layout_width="match_parent"
                         android:layout_weight="40"
                         android:gravity="center"
+                        android:textColor="#a4a4a4"
                         android:text="34/1(8)"
                         android:id="@+id/Score_On_Pitch"
                         android:layout_height="wrap_content" />

@@ -1,5 +1,7 @@
 package com.leagueofchampions.kiit.Model;
 
+import java.math.BigInteger;
+
 /**
  * Created by Dwijraj on 21-11-2017.
  */
@@ -12,7 +14,17 @@ public class Batsman {
     private String Four;
     private String Six;
     private String StrikeRate;
-    private int    Number;
+    private String Position;
+    private BigInteger Number;
+
+    public String getPosition() {
+        return Position;
+    }
+
+    public void setPosition(String position) {
+        Position = position;
+    }
+
     public String getName() {
         return Name;
     }
@@ -64,21 +76,22 @@ public class Batsman {
     public Batsman() {
     }
 
-    public int getNumber() {
+    public BigInteger getNumber() {
         return Number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(BigInteger number) {
         Number = number;
     }
 
-    public Batsman(String name, String runs, String balls, String four, String six, String strikeRate, int Position) {
+    public Batsman(String name, String runs, String balls, String four, String six, String strikeRate,String Position, BigInteger number) {
         Name = name;
         Runs = runs;
         Balls = balls;
         Four = four;
         Six = six;
+        this.Position=Position;
         StrikeRate = strikeRate;
-        this.Number=Position;
+        this.Number=number;
     }
 }

@@ -62,6 +62,15 @@ public class PlayedFixtureRecyclerViewAdapter extends RecyclerView.Adapter<Playe
         holder.Team1.setImageResource(Constants.NAMES_FLAGS.get(Match.getTeam1()));
         holder.Team2.setImageResource(Constants.NAMES_FLAGS.get(Match.getTeam2()));
         holder.Result.setText(Match.getResult());
+
+        if(Match.getResult().equals("Not Played") && position!=0 && (!Homescreen.FOUND_NEXT_MATCH))
+        {
+
+            Homescreen.NEXT_MATCH=Match;
+            Homescreen.FOUND_NEXT_MATCH=true;
+        }
+
+
         holder.Holder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

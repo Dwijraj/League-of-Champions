@@ -39,6 +39,7 @@ import com.leagueofchampions.kiit.R;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
@@ -46,6 +47,11 @@ import java.util.Map;
 public class Homescreen extends AppCompatActivity {
 
     private ShimmerTextView Title;
+    private ShimmerTextView Start_Time;
+
+    public static Played_Fixture NEXT_MATCH;
+    public static Boolean FOUND_NEXT_MATCH;
+
     private TabLayout tabLayout;
     private TabLayout.Tab Live,Standings,Result,Fixtures;
     private ImageButton Left_Button,Right_Button;
@@ -58,13 +64,13 @@ public class Homescreen extends AppCompatActivity {
     private View Tabs[];
 
     //Live Tab's views
-    private ImageView Team1_Image,Team2_Image;
-    private TextView  Team1_Name,Team2_Name;
-    private TextView  Team1_Score,Team2_Score;
+    public static ImageView Team1_Image,Team2_Image;
+    public static TextView  Team1_Name,Team2_Name;
+    public static TextView  Team1_Score,Team2_Score;
     private TextView  View_Details;
     private DatabaseReference Team1Score,Team2Score,Team1Name,Team2Name;
     private ProgressBar Team1_Image_Progress,Team2_Image_Progress;
-
+    private LinearLayout NO_LIVE_MATCHES;
 
     //Fixture Tab's Views
     private RecyclerView Matches;
@@ -94,7 +100,11 @@ public class Homescreen extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_homescreen);
 
+        Played_Fixtures_Referance=FirebaseDatabase.getInstance().getReference().child("PlayedFixtures");
+
+
         GLOBAL_ACTIVITY=this;
+        FOUND_NEXT_MATCH=false;
 
         try {
             FirebaseDatabase.getInstance().setPersistenceEnabled(true);
@@ -108,7 +118,8 @@ public class Homescreen extends AppCompatActivity {
         WALLPAPER=(ImageView) findViewById(R.id.Wallpaper);
         Left_Button=(ImageButton) findViewById(R.id.move_left);
         Right_Button=(ImageButton) findViewById(R.id.move_right);
-
+        NO_LIVE_MATCHES=(LinearLayout) findViewById(R.id.No_Live_Matches);
+        Start_Time=(ShimmerTextView) findViewById(R.id.SHIMMER);
         //Live Tab's view
         Live_Tab=(LinearLayout) findViewById(R.id.Live_Tab);
         Team1_Image=(ImageView) findViewById(R.id.Team1_Image);
@@ -140,25 +151,29 @@ public class Homescreen extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 Teams.clear();
-                for(DataSnapshot D:dataSnapshot.getChildren())
-                {
-                    Team_Stats_Received Team=D.getValue(Team_Stats_Received.class);
-                    Team_Stats Team_=new Team_Stats();
+                try {
+                    for (DataSnapshot D : dataSnapshot.getChildren()) {
 
-                    Team_.setDraw(Integer.parseInt(Team.getDraw()));
-                    Team_.setLoss(Integer.parseInt(Team.getLoss()));
+                        Team_Stats_Received Team = D.getValue(Team_Stats_Received.class);
+                        Team_Stats Team_ = new Team_Stats();
 
-                    Team_.setMatches(Integer.parseInt(Team.getMatches()));
-                    Team_.setPoints(Integer.parseInt(Team.getPoints()));
-                    Team_.setName(Team.getName());
-                    Team_.setWins(Integer.parseInt(Team.getWins()));
-                    Team_.setNRR(Float.parseFloat(Team.getNRR()));
-                    Teams.add(Team_);
+                        Team_.setDraw(Integer.parseInt(Team.getDraw()));
+                        Team_.setLoss(Integer.parseInt(Team.getLoss()));
+
+                        Team_.setMatches(Integer.parseInt(Team.getMatches()));
+                        Team_.setPoints(Integer.parseInt(Team.getPoints()));
+                        Team_.setName(Team.getName());
+                        Team_.setWins(Integer.parseInt(Team.getWins()));
+                        Team_.setNRR(Float.parseFloat(Team.getNRR()));
+                        Teams.add(Team_);
 
 
-                    Log.v("DwijrajMaina",Team.getMatches()+":"+Team_.getPoints());
+                        Log.v("DwijrajMaina", Team.getMatches() + ":" + Team_.getPoints());
 
+                    }
                 }
+                catch (Exception e)
+                {}
 
                 if(Teams.size()!=0) {
                     Collections.sort(Teams, new Sort_Teams());
@@ -434,9 +449,56 @@ public class Homescreen extends AppCompatActivity {
                     Team1_Name.setText(dataSnapshot.getValue(String.class));
                     //Uncomment latter
                     Team1_Image.setImageResource(Constants.NAMES_FLAGS.get(dataSnapshot.getValue(String.class)));
+
+                    NO_LIVE_MATCHES.setVisibility(View.INVISIBLE);
                 }
                 catch (Exception e)
-                {}
+                {
+
+                    Log.v("MainaTesting","Before1");
+                    NO_LIVE_MATCHES.setVisibility(View.VISIBLE);
+
+                    Played_Fixtures_Referance.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+
+                            try {
+                                for (DataSnapshot D : dataSnapshot.getChildren()) {
+                                    Played_Fixture Match = D.getValue(Played_Fixture.class);
+                                    Match.setSerial_Number(D.getKey().toString());
+                                    String[] Data = Match.getDate().split("-");
+                                    Match.setDate(Data[2] + "/" + Data[1] + "/" + Data[0]);
+
+                                    if(Match.getSerial_Number().equals("1") && Match.getResult().equals("Not PLayed"))
+                                    {
+                                        break;
+                                    }
+                                    else if(Match.getResult().equals("Not Played"))
+                                    {
+                                        Start_Time.setText("Next match on "+Match.getDate()+" at "+Match.getTime()+"\n"
+                                        +"between \n"+Match.getTeam1()+" and "+Match.getTeam2());
+                                        break;
+
+                                    }
+
+                                }
+                            }
+                            catch (Exception e)
+                            {}
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+
+
+
+                }
             }
 
             @Override
@@ -457,9 +519,14 @@ public class Homescreen extends AppCompatActivity {
                     Team2_Name.setText(dataSnapshot.getValue(String.class));
                     //Uncomment latter
                     Team2_Image.setImageResource(Constants.NAMES_FLAGS.get(dataSnapshot.getValue(String.class)));
+
+                    NO_LIVE_MATCHES.setVisibility(View.INVISIBLE);
                 }
                 catch (Exception e)
-                {}
+                {
+
+                    NO_LIVE_MATCHES.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
@@ -556,6 +623,7 @@ public class Homescreen extends AppCompatActivity {
         Shimmer s=new Shimmer();
         s.setDuration(5000);
         s.start(Title);
+        s.start(Start_Time);
 
     }
 }
