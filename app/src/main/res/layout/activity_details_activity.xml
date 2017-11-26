@@ -207,7 +207,7 @@
 
                                         android:textColor="#fff"
                                         android:textStyle="bold"
-                                        android:gravity="center"
+                                        android:gravity="start"
                                         android:layout_weight="20"
                                         android:text="SR"
                                         />
@@ -387,7 +387,7 @@
                                         android:textStyle="bold"
                                         android:gravity="center"
                                         android:layout_weight="20"
-                                        android:text="Maid"
+                                        android:text="M"
                                         />
 
 
@@ -412,7 +412,7 @@
 
                                         android:textColor="#fff"
                                         android:textStyle="bold"
-                                        android:gravity="center"
+                                        android:gravity="start"
                                         android:layout_weight="20"
                                         android:text="Econ"
                                         />

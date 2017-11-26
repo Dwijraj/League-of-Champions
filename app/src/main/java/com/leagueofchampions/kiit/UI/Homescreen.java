@@ -100,18 +100,22 @@ public class Homescreen extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_homescreen);
 
+        try {
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        }
+        catch (Exception e)
+        {
+
+        }
+
+
+
         Played_Fixtures_Referance=FirebaseDatabase.getInstance().getReference().child("PlayedFixtures");
 
 
         GLOBAL_ACTIVITY=this;
         FOUND_NEXT_MATCH=false;
 
-        try {
-            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-
-        }
-        catch (Exception e)
-        {}
         Title=(ShimmerTextView) findViewById(R.id.Title);
         tabLayout=(TabLayout) findViewById(R.id.Tab_layout);
         SET_AS_WALLPAPER=(ImageView) findViewById(R.id.set_as_wallpaper);
@@ -258,18 +262,22 @@ public class Homescreen extends AppCompatActivity {
                 Match_List.clear();
                 Log.v("Dwijraj",dataSnapshot.toString());
                 Log.v("Dwijraj1","WOrking1");
-                for(DataSnapshot D:dataSnapshot.getChildren())
+                try {
+                    for (DataSnapshot D : dataSnapshot.getChildren()) {
+                        Log.v("Dwijraj1", "WOrking2");
+                        Fixture Match = D.getValue(Fixture.class);
+                        Match.setSerial_Number(D.getKey().toString());
+                        String[] Data = Match.getDate().split("-");
+                        Match.setDate(Data[2] + "/" + Data[1] + "/" + Data[0]);
+                        Log.v("Dwijraj1", "WOrking3");
+                        Match_List.add(Match);
+
+                    }
+                }
+                catch (Exception e)
                 {
-                    Log.v("Dwijraj1","WOrking2");
-                    Fixture Match=D.getValue(Fixture.class);
-                    Match.setSerial_Number(D.getKey().toString());
-                    String[] Data=Match.getDate().split("-");
-                    Match.setDate(Data[2]+"/"+Data[1]+"/"+Data[0]);
-                    Log.v("Dwijraj1","WOrking3");
-                    Match_List.add(Match);
 
                 }
-
                 if(Match_List.size()!=0) {
                     Log.v("Dwijraj1", "WOrking4");
                     recyclerViewAdapter = new RecyclerViewAdapter(Match_List, Homescreen.this);
@@ -292,8 +300,8 @@ public class Homescreen extends AppCompatActivity {
         Current_Image=Favourite_Team.getInt(Constants.Favourite_Team,0);
 
         Constants.TEAM_NAMES.put(Constants.FEROCIOUS_KNGIHTS,"Ferocious Knights");
-        Constants.TEAM_NAMES.put(Constants.GALACTICOS,"Galacticos");
-        Constants.TEAM_NAMES.put(Constants.KAISERS_ELEVEN,"Kaisers Eleven");
+        Constants.TEAM_NAMES.put(Constants.GALACTICOS,"Galacticos XI");
+        Constants.TEAM_NAMES.put(Constants.KAISERS_ELEVEN,"Kaisers XI");
         Constants.TEAM_NAMES.put(Constants.MIGHTY_BISONS,"Mighty Bisons");
         Constants.TEAM_NAMES.put(Constants.PHOENIX_PHANTOMS,"Phoenix phantoms");
         Constants.TEAM_NAMES.put(Constants.ROYAL_WARRIORS,"Royal Warriors");
